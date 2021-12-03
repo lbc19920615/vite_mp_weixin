@@ -1,0 +1,11 @@
+<!-- <view class="wrapper">
+ <computed-example />
+</view> -->
+<!--<view class="wrapper">-->
+<!--  <watch-example />-->
+<!--</view>-->
+
+
+<view class="wrapper">
+  <form-a></form-a>
+</view>

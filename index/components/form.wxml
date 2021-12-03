@@ -1,0 +1,5 @@
+<!--index/components/form.wxml-->
+<view wx:for="{{list}}" wx:key="id">
+  {{item.id}}
+  <tpl-slot form-id="{{uuid}}" name="test-a" binds="{{item}}"></tpl-slot>
+</view>

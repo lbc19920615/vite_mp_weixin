@@ -1,0 +1,6 @@
+<import src="../templates/slots.wxml" />
+<wxs src="../wxs/slots.wxs" module="slots" />
+
+<view> {{slots.foo}} </view>
+
+<template is="{{name}}" data="{{binds}}"></template>

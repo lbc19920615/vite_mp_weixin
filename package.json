@@ -1,0 +1,21 @@
+{
+  "name": "minicode-98",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eval5": "^1.4.7",
+    "fast-deep-equal": "^2.0.1",
+    "js-chacha20": "^1.1.0",
+    "miniprogram-computed": "^4.1.1",
+    "mobx-miniprogram": "^4.13.2",
+    "mobx-miniprogram-bindings": "^1.2.1",
+    "rfdc": "^1.1.4"
+  }
+}
