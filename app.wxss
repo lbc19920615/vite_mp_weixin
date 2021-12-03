@@ -76,12 +76,6 @@ page {
     --danger-color: var(--el-color-danger);
 }
 
-@media (prefers-color-scheme: dark) {
-  page {
-    --el-color-primary: #d6efff;
-  }
-}
-
 /* reset */
 radio .wx-radio-input {
   border-radius: 50%;
@@ -106,3 +100,5 @@ radio .wx-radio-input.wx-radio-input-checked::before {
 checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   color: var(--el-color-primary);
 }
+
+@import 'app-wxa-auto-dark.wxss'

@@ -1,3 +1,4 @@
 .wrapper {
   margin: 20px;
 }
+@import 'index-wxa-auto-dark.wxss'

@@ -1,58 +1,116 @@
-import { behavior as computedBehavior } from 'miniprogram-computed'
-import bform__behavior from './bform__behavior'
+import { createFormComponent } from './zform/zform.js'
 
-Component({
-  behaviors: [bform__behavior, computedBehavior],
-  relations: {
-    'bform__behavior': {
-      type: 'descendant', // 关联的目标节点应为子孙节点
-      target: bform__behavior
-    }
-  },
-  properties: {
-  },
-  data: {
-    uuid: 'form__' + global.ZY.rid(10),
-    list: [
-      {
-        id: 1
+const formDef = {
+  constants: {},
+  parts: [
+    {
+      type: 'form',
+      name: 'form_V033_p',
+      serviceTpl: {
+        def: {},
+        args: {
+          src: 'bservice.twig'
+        }
       },
-      {
-        id: 2
+      def: {
+        type: 'object',
+        ui: {
+          attrs: [
+            [
+              'labelPostion',
+              'top'
+            ],
+            [
+              'label-position',
+              'top'
+            ]
+          ],
+          class: [],
+          styles: []
+        },
+        properties: {
+          field__znE17X3L4G: {
+            type: 'string',
+            INIT_CONFIG: {
+              type: 'string'
+            },
+            ui: {
+              widget: 'CusInput',
+              label: '多行文本',
+              widgetConfig: {
+                type: 'textarea'
+              }
+            },
+            server: {
+              field_name: 'field__znE17X3L4G'
+            }
+          },
+          field__Q2r0LTemeo: {
+            type: 'string',
+            ui: {
+              widget: 'CusTimePicker',
+              label: '日期选择',
+              widgetConfig: {
+                valueFormat: 'HH:mm:ss'
+              }
+            },
+            sub_type: 'time',
+            computedFun: '',
+            rules: [],
+            server: {
+              field_name: 'field__Q2r0LTemeo'
+            },
+            rules_json: '[]'
+          },
+          field__TSjNqnDLCQ: {
+            type: 'string',
+            ui: {
+              widget: 'CusTimePicker',
+              label: '时间选择',
+              widgetConfig: {
+                valueFormat: 'HH:mm:ss'
+              }
+            },
+            sub_type: 'time',
+            computedFun: '',
+            rules: [],
+            server: {
+              field_name: 'field__TSjNqnDLCQ'
+            },
+            rules_json: '[]'
+          },
+          field__KZxgpust9N: {
+            type: 'string',
+            INIT_CONFIG: {
+              type: 'string'
+            },
+            ui: {
+              widget: 'CusRichText',
+              label: '',
+              hiddenLabel: true,
+              widgetConfig: {
+                html_content: "{content:[{type:'paragraph',children:[{text:'图文展示'}]}],html:'<div class=\"w-e-content-container\">\\r\\n <p>图文展示</p>\\r\\n</div>'}",
+                css_style: ':host {\n background-color: rgba(22, 159, 131, 0.6);\n color: rgba(254, 254, 254, 1);\n}'
+              }
+            },
+            computedFun: '',
+            rules: [],
+            server: {
+              field_name: 'field__KZxgpust9N'
+            },
+            css: "{cached:{':host':{backgroundColor:'rgba(22, 159, 131, 0.6)',color:'rgba(254, 254, 254, 1)'},':host(:hover) ':{},':host(:active) ':{}},css:':host {\\n background-color: rgba(22, 159, 131, 0.6);\\n color: rgba(254, 254, 254, 1);\\n}'}",
+            rules_json: '[]'
+          }
+        },
+        metas: {
+          form_data: 'json_54911'
+        }
       },
-      {
-        id: 3
-      },
-    ],
-    model_str: '',
-    model: {}
-  },
-  watch: {
-    model_str: function(newVal) {
-      console.log('model_str', newVal)
-    },
-    ['model.**']: function(newVal) {
-      console.log('model', newVal)
+      computed: {}
     }
-  },
-  lifetimes: {
-    created() {
-      this.registerForm(this.data.uuid, this);
-      console.log('form created')
-    },
-    ready() {
-      this.test1()
-    }
-  },
+  ]
+}
 
-  methods: {
-    setModelByPath(path, val) {
-      let s_path = 'model.' + path
-      this.setData({
-        // ['model_str']: Date.now(),
-        [s_path]: val
-      })
-    }
-  },
-  
+createFormComponent({
+  formDef
 })

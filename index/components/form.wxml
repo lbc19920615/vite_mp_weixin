@@ -1,9 +1,30 @@
 <!--index/components/form.wxml-->
-<view wx:for="{{list}}" wx:key="id">
+<!-- <view wx:for="{{list}}" wx:key="id" >
 ID  {{item.id}} VALUE {{model[item.id]}}
   <cm-field
     prop="{{item.id}}"
-    form-id="{{uuid}}">
+    form-id="{{uuid}}"
+    binds="{{ {a: 1} }}"
+    >
   </cm-field>
   <slot-com form-id="{{uuid}}" name="test-a" binds="{{item}}"></slot-com>
+</view> -->
+
+<view class="level_1 z-form__object " labelPostion='top' label-position='top' binds="{{ {a: 1} }}" wx:if="{{model}}">
+  <view class="level_2 z-form__prop " style="">
+    <cm-field label="field__znE17X3L4G" prop="field__znE17X3L4G" type="string" sub_type="undefined" path-arr="{{['field__znE17X3L4G']}}" part_key="parts.form_V033_p" form-id="{{uuid}}">
+    </cm-field>
+  </view>
+  <view class="level_2 z-form__prop " style="">
+    <cm-field label="field__Q2r0LTemeo" prop="field__Q2r0LTemeo" type="string" sub_type="time" path-arr="{{['field__Q2r0LTemeo']}}" part_key="parts.form_V033_p" form-id="{{uuid}}">
+    </cm-field>
+  </view>
+  <view class="level_2 z-form__prop " style="">
+    <cm-field label="field__TSjNqnDLCQ" prop="field__TSjNqnDLCQ" type="string" sub_type="time" path-arr="{{['field__TSjNqnDLCQ']}}" part_key="parts.form_V033_p" form-id="{{uuid}}">
+    </cm-field>
+  </view>
+  <view class="level_2 z-form__prop " style="">
+    <cm-field label="field__KZxgpust9N" prop="field__KZxgpust9N" type="string" sub_type="undefined" path-arr="{{['field__KZxgpust9N']}}" part_key="parts.form_V033_p" form-id="{{uuid}}">
+    </cm-field>
+  </view>
 </view>
