@@ -1,0 +1,32 @@
+<wxs src="../wxs/index.wxs" module="common" />
+
+<view class="cm-field cm-field--{{direction}}">
+  <view class="cm-field__label">label</view>
+  <view class="cm-field__content">
+    <input  maxlength="10" placeholder="最大输入长度为10" bind:input="bindInput" />
+    <input type="number"  maxlength="10" placeholder="最大输入长度为10" bind:input="bindInputNumber" />
+<radio-group bind:change="bindChange">
+<label wx:for="{{options}}"><radio 
+value="{{item.value}}"></radio>{{item.label}}</label>
+</radio-group>
+
+<checkbox-group bind:change="bindChange">
+<label wx:for="{{options}}"><checkbox 
+value="{{item.value}}"></checkbox>{{item.label}}</label>
+</checkbox-group>
+
+    
+<view class="picker">
+      当前选择：{{options[pickerIndex].value}}
+    </view>
+  <picker-view 
+  style="width: 100%; height: 300px;"
+  bind:change="bindPickerChange" value="{{pickerIndex}}"   >
+    <picker-view-column>
+      <view wx:for="{{options}}" wx:key="value" >{{item.value}}</view>
+    </picker-view-column>
+  </picker-view>
+
+
+  </view>
+</view>

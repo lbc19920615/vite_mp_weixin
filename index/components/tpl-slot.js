@@ -27,8 +27,8 @@ Component({
   },
   lifetimes: {
     ready() {
-      console.log(this.getForm(this.data.formId));
-      console.log('slot ready')
+      // console.log(this.getForm(this.data.formId));
+      // console.log('slot ready')
     }
   }
 })
