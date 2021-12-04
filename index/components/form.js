@@ -1,4 +1,5 @@
 import { createFormComponent } from './zform/zform.js'
+import { parseConfigJSON5 } from './zform/utils.js'
 
 const formDef = {
   constants: {},
