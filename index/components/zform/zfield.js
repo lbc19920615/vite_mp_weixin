@@ -23,20 +23,21 @@ export function createFieldComponent() {
     data: {
       options: [
         {
-          label: '1',
-          value: '1'
+          label: '1de',
+          value: '1de'
         },
         {
-          label: '2',
-          value: '2'
+          label: '2de',
+          value: '2de'
         }
       ],
       direction: 'left',
-      pickerIndex: 0
+      pickerIndex: 0,
+      optionCurrent: {}
     },
     lifetimes: {
       ready() {
-        console.log(this.test1)
+        // console.log(this.test1)
       }
     },
     methods: {
@@ -63,9 +64,10 @@ export function createFieldComponent() {
         this.onChange(e.detail.value)
       },
       bindPickerChange(e) {
-        let index = parseFloat(e.detail.value)
+        let index = parseFloat(e.detail.value);
+        console.log('bindChange', index)
         this.setData({
-          pickerIndex: index
+          optionCurrent: this.data.options[index]
         })
       }
     }

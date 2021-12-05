@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "form-a": "./components/form",
+    "form-a": "./components/form-b",
     "watch-example": "./components/watch-example"
   }
 }
