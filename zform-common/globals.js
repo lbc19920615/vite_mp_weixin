@@ -86,3 +86,6 @@ function makeRand() {
 		return result;
 	};
 }
+
+import * as ZY from './weapp.js'
+global.ZY = ZY
