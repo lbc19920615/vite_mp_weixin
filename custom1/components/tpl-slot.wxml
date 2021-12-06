@@ -1,4 +1,4 @@
-<wxs src="./zform/utils.wxs" module="utils" />
+<wxs src="../zform/utils.wxs" module="utils" />
 
 <!-- <view> {{utils.foo}}1111 </view> -->
 

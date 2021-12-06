@@ -1,5 +1,5 @@
 
-    <wxs src="./zform/utils.wxs" module="utils"></wxs>
+    <wxs src="../zform/utils.wxs" module="utils"></wxs>
 
     
 <template name="form_afterend">
