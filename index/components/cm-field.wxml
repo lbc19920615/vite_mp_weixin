@@ -1,4 +1,4 @@
-<wxs src="../wxs/index.wxs" module="common" />
+<wxs src="./zform/utils.wxs" module="utils" />
 
 <view class="cm-field cm-field--{{direction}}">
   <view class="cm-field__label">label</view>

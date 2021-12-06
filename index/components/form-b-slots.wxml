@@ -1,0 +1,11 @@
+
+    <wxs src="./zform/utils.wxs" module="utils"></wxs>
+
+    
+<template name="form_afterend">
+<view     >1111</view>
+</template>
+
+
+    <template is="{{ name }}" data="{{ binds }}"></template>
+  

@@ -1,4 +1,8 @@
 
+  <view class="http-com comformscr2">
+    <view class="z-form http-com-part http-com-part__">
+      <slot-com binds="{{ { a: 1 } }}" name="form_afterbegin"></slot-com>
+      
          
 <view class="level_1 z-form__object " labelPostion='top' label-position='top' 
 binds="{{ {a: 1} }}"
@@ -84,3 +88,7 @@ form-id="{{uuid}}"
 
 
 </view>
+
+      <slot-com binds="{{ { a: 1 } }}" name="form_afterend"></slot-com>
+    </view>
+  </view>

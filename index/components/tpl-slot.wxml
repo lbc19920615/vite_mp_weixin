@@ -1,6 +1,9 @@
-<import src="../templates/slots.wxml" />
-<wxs src="../wxs/slots.wxs" module="slots" />
+<wxs src="./zform/utils.wxs" module="utils" />
 
-<view> {{slots.foo}} </view>
+<!-- <view> {{utils.foo}}1111 </view> -->
+
+<template name="form_afterend">
+<view>sdsdsd</view>
+</template>
 
 <template is="{{name}}" data="{{binds}}"></template>

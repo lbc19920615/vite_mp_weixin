@@ -2,7 +2,7 @@
     {
         "component": true,
         "usingComponents": {
-            "slot-com": "tpl-slot",
+            "slot-com": "form-b-slots",
             "cm-field": "cm-field"
         }
     }

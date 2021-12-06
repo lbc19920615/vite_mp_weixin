@@ -15,7 +15,8 @@ export function createFormComponent({
     properties: {
     },
     data: {
-      uuid: 'form__' + global.ZY.rid(10),
+      formName: formDef.name,
+      uuid: 'zform__' + global.ZY.rid(10),
       list: [
         {
           id: 1
@@ -41,10 +42,10 @@ export function createFormComponent({
     lifetimes: {
       created() {
         this.registerForm(this.data.uuid, this);
-        console.log('form created')
+        console.log('form created', this.data.uuid, this.data.formName)
       },
       ready() {
-        this.test1()
+        // this.test1()
       }
     },
   
