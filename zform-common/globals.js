@@ -1,3 +1,12 @@
+const getGlobal = function() {
+	// if (typeof self !== 'undefined') { return self; }
+	if (typeof globalThis !== 'undefined') { return globalThis; }
+  if (typeof global !== 'undefined') { return global; }
+  throw new Error('unable to locate global object');
+};
+
+let global = getGlobal();
+
 global.Object = Object
 global.Array = Array
 // global.Buffer = Buffer

@@ -1,5 +1,7 @@
 import { behavior as computedBehavior } from 'miniprogram-computed'
 import bform__behavior from './bform__behavior'
+import {getGlobal} from './utils'
+let global = getGlobal();
 
 export function createFormComponent({
   formDef
