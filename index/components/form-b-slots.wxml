@@ -3,7 +3,9 @@
 
     
 <template name="form_afterend">
-<view     >1111</view>
+<view     bind:tap="callEvent" 
+
+>1111</view>
 </template>
 
 

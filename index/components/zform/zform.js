@@ -56,6 +56,9 @@ export function createFormComponent({
           // ['model_str']: Date.now(),
           [s_path]: val
         })
+      },
+      handleEvent(e) {
+        console.log(e)
       }
     },
     

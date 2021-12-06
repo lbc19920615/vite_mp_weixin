@@ -3,7 +3,18 @@ var foo = "'hello world' from comm.wxs";
 var bar = function(d) {
   return d;
 }
+
+/**
+ * 
+ * @param e 获取代码
+ * @param instanse 
+ */
+function callEvent(e, instanse) {
+  console.log(instanse.callMethod)
+  instanse.callMethod('callEvent', {e: e})
+}
 module.exports = {
   foo: foo,
-  bar: bar
+  bar: bar,
+  callEvent: callEvent,
 }
