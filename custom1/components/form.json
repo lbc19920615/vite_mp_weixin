@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "slot-com": "tpl-slot",
-    "cm-field": "cm-field"
-  }
-}
