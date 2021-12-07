@@ -42,14 +42,16 @@ export function createFieldComponent() {
       direction: 'left',
       pickerIndex: 0,
       optionCurrent: {},
-      fieldPath: ''
+      fieldPath: '',
+      uiConfig: {}
     },
     lifetimes: {
       ready() {
         let config = this.zform__getFieldConfig(this.data.formId,  this.data.configPath);
         console.log(config)
         this.setData({
-          fieldPath: this.zform__getObjPathFromPathArr(this.data.pathArr)
+          fieldPath: this.zform__getObjPathFromPathArr(this.data.pathArr),
+          uiConfig: config?.ui ?? {}
         })
       }
     },
