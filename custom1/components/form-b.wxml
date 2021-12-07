@@ -18,6 +18,7 @@ wx:if="{{model}}"
 
 style=""
 ><cm-field
+class="z-form__field"
 label="field__znE17X3L4G" 
 prop="field__znE17X3L4G" 
 type="string"
@@ -39,6 +40,7 @@ config-path="def.properties.field__znE17X3L4G"
 
 style=""
 ><cm-field
+class="z-form__field"
 label="field__rCN7FDLAj3" 
 prop="field__rCN7FDLAj3" 
 type="string"
@@ -60,6 +62,7 @@ config-path="def.properties.field__rCN7FDLAj3"
 
 style=""
 ><cm-field
+class="z-form__field"
 label="field__TSjNqnDLCQ" 
 prop="field__TSjNqnDLCQ" 
 type="string"
@@ -81,6 +84,7 @@ config-path="def.properties.field__TSjNqnDLCQ"
 
 style=""
 ><cm-field
+class="z-form__field"
 label="field__dD5oS9xNi7" 
 prop="field__dD5oS9xNi7" 
 type="number"
@@ -102,6 +106,7 @@ config-path="def.properties.field__dD5oS9xNi7"
 
 style=""
 ><cm-field
+class="z-form__field"
 label="field__rKrKlUFzvu" 
 prop="field__rKrKlUFzvu" 
 type="number"
@@ -123,6 +128,7 @@ config-path="def.properties.field__rKrKlUFzvu"
 
 style=""
 ><cm-field
+class="z-form__field"
 label="field__KZxgpust9N" 
 prop="field__KZxgpust9N" 
 type="string"

@@ -1,6 +1,6 @@
 <wxs src="../zform/utils.wxs" module="utils" />
 
-<view class="cm-field cm-field--{{direction}}">
+<view class="cm-field cm-field--dir-{{utils.get(formWigetConfig, ['label-position'])}}">
   <view class="cm-field__label">{{ utils.get(uiConfig, ['label']) }}</view>
   <view class="cm-field__content">
 
@@ -54,4 +54,5 @@ value="{{item.value}}"></checkbox>{{item.label}}</label>
   
 
   </view>
+  <view class="cm-field__label">{{ utils.get(uiConfig, ['desc']) }}</view>
 </view>
