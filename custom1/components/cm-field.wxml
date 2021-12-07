@@ -21,7 +21,7 @@ value="{{item.value}}"></checkbox>{{item.label}}</label>
 
 />
 
-<!-- {{APP_DATA.themeVars}} -->
+<!-- {{utils.get(APP_DATA, ['themeVars', '--el-color-white'])}} -->
 
 <z-picker value="{{innerValue}}" options="{{[options]}}" bind:confirm="onCustom">
 {{utils.defVal(innerValue, '请选择')}}
