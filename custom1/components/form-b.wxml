@@ -39,15 +39,15 @@ config-path="def.properties.field__znE17X3L4G"
 
 style=""
 ><cm-field
-label="field__Q2r0LTemeo" 
-prop="field__Q2r0LTemeo" 
+label="field__rCN7FDLAj3" 
+prop="field__rCN7FDLAj3" 
 type="string"
-sub_type="time"
-path-arr="{{['field__Q2r0LTemeo']}}"
+sub_type="datetime"
+path-arr="{{['field__rCN7FDLAj3']}}"
 part_key="parts.form_V033_p"
-form-path="model.field__Q2r0LTemeo"
+form-path="model.field__rCN7FDLAj3"
 form-id="{{uuid}}"
-config-path="def.properties.field__Q2r0LTemeo"
+config-path="def.properties.field__rCN7FDLAj3"
 >
 
 </cm-field>
@@ -69,6 +69,48 @@ part_key="parts.form_V033_p"
 form-path="model.field__TSjNqnDLCQ"
 form-id="{{uuid}}"
 config-path="def.properties.field__TSjNqnDLCQ"
+>
+
+</cm-field>
+            
+</view>
+
+
+<view class="level_2 z-form__prop " 
+
+
+style=""
+><cm-field
+label="field__dD5oS9xNi7" 
+prop="field__dD5oS9xNi7" 
+type="number"
+sub_type="undefined"
+path-arr="{{['field__dD5oS9xNi7']}}"
+part_key="parts.form_V033_p"
+form-path="model.field__dD5oS9xNi7"
+form-id="{{uuid}}"
+config-path="def.properties.field__dD5oS9xNi7"
+>
+
+</cm-field>
+            
+</view>
+
+
+<view class="level_2 z-form__prop " 
+
+
+style=""
+><cm-field
+label="field__rKrKlUFzvu" 
+prop="field__rKrKlUFzvu" 
+type="number"
+sub_type="undefined"
+path-arr="{{['field__rKrKlUFzvu']}}"
+part_key="parts.form_V033_p"
+form-path="model.field__rKrKlUFzvu"
+form-id="{{uuid}}"
+config-path="def.properties.field__rKrKlUFzvu"
 >
 
 </cm-field>

@@ -15,6 +15,15 @@
     </view>
   </picker>
 </block>
+
+<block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusDateTimePicker'}}"> 
+  <picker mode="date" value="{{item.value}}" bindchange="bindDateChange">
+    <view class="picker">
+      当前选择: {{date}}
+    </view>
+  </picker>
+</block>
+
 <block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusRichText'}}"> 
   <z-richtext html-content="  {{ utils.get(uiConfig, ['widgetConfig', 'html_content']) }} "></z-richtext>
 </block>
