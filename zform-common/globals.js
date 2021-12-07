@@ -5,7 +5,7 @@ const getGlobal = function() {
   throw new Error('unable to locate global object');
 };
 
-let global = getGlobal();
+export let global = getGlobal();
 
 global.Object = Object
 global.Array = Array
@@ -94,7 +94,8 @@ function makeRand() {
 		}
 		return result;
 	};
-}
+};
 
-import * as ZY from './weapp.js'
-global.ZY = ZY
+import * as _ZY from './weapp.js';
+global.ZY = _ZY;
+export let ZY = _ZY;
