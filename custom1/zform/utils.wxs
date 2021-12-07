@@ -1,11 +1,49 @@
 
-var foo = "'hello world' from comm.wxs";
+var version = "0.1.1";
 
+/**
+ * 类似于lodash get
+ * @param obj 
+ * @param pathArr 
+ */
+function get(obj, pathArr) {
+  var arr = []; 
+  if (typeof obj === 'undefined' ) {
+    return ''
+  }
+  if (typeof pathArr !== 'undefined' && pathArr.constructor === 'Array') {
+    arr = pathArr
+  }
+  if (obj.constructor === 'Object') {
+    var cur = obj;
 
+    arr.every(function(item, index) {
+      if (typeof cur[item] === 'undefined') {
+        return false;
+      } else {
+        cur = cur[item];
+        return true;
+      }
+    });
+    // console.log(JSON.stringify(cur))
+    return cur
+  }
+  return ''
+}
+
+/**
+ * 是否是数组
+ * @param array 
+ */
 function isArray(array) {
   return array && array.constructor === 'Array';
 }
 
+/**
+ * 如果值是undefined 就使用默认值
+ * @param v 
+ * @param defaultVal 
+ */
 var defVal = function(v, defaultVal) {
   if (typeof v === 'undefined') {
     return defaultVal
@@ -13,21 +51,26 @@ var defVal = function(v, defaultVal) {
   return v
 }
 
+/**
+ * 判断是否未定义
+ * @param v 
+ */
 var isUnDef = function(v) {
   return typeof v === 'undefined'
 }
 
 /**
- * 
+ * 调用事件
  * @param e 获取代码
  * @param instanse 
  */
 function callEvent(e, instanse) {
-  console.log(instanse.callMethod)
+  // console.log(instanse.callMethod)
   instanse.callMethod('callEvent', {e: e})
 }
 module.exports = {
-  foo: foo,
+  version: version,
+  get: get,
   isArray: isArray,
   isUnDef: isUnDef,
   defVal: defVal,
