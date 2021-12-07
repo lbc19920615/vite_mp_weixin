@@ -1,4 +1,10 @@
 .wrapper {
   margin: 20px;
 }
+
+
+.w-e-content-container {
+  background-color: #429285;
+}
+
 @import 'index-wxa-auto-dark.wxss'

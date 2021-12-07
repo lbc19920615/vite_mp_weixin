@@ -4,7 +4,7 @@ var __DEFINE__ = function(modId, func, req) { var m = { exports: {}, _tempexport
 var __REQUIRE__ = function(modId, source) { if(!__MODS__[modId]) return require(source); if(!__MODS__[modId].status) { var m = __MODS__[modId].m; m._exports = m._tempexports; var desp = Object.getOwnPropertyDescriptor(m, "exports"); if (desp && desp.configurable) Object.defineProperty(m, "exports", { set: function (val) { if(typeof val === "object" && val !== m._exports) { m._exports.__proto__ = val.__proto__; Object.keys(val).forEach(function (k) { m._exports[k] = val[k]; }); } m._tempexports = val }, get: function () { return m._tempexports; } }); __MODS__[modId].status = 1; __MODS__[modId].func(__MODS__[modId].req, m, m.exports); } return __MODS__[modId].m.exports; };
 var __REQUIRE_WILDCARD__ = function(obj) { if(obj && obj.__esModule) { return obj; } else { var newObj = {}; if(obj != null) { for(var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) newObj[k] = obj[k]; } } newObj.default = obj; return newObj; } };
 var __REQUIRE_DEFAULT__ = function(obj) { return obj && obj.__esModule ? obj.default : obj; };
-__DEFINE__(1638492705483, function(require, module, exports) {
+__DEFINE__(1638838895936, function(require, module, exports) {
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -48,8 +48,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var _default = _evaluate.default;
 exports.default = _default;
-}, function(modId) {var map = {"./interpreter/main":1638492705484,"./vm":1638492705486,"./evaluate":1638492705487,"./Function":1638492705488}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1638492705484, function(require, module, exports) {
+}, function(modId) {var map = {"./interpreter/main":1638838895937,"./vm":1638838895939,"./evaluate":1638838895940,"./Function":1638838895941}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1638838895937, function(require, module, exports) {
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -2137,8 +2137,8 @@ Interpreter.ecmaVersion = 5; // alert.call(globalContextInFunction, 1);
 
 Interpreter.globalContextInFunction = void 0;
 Interpreter.global = Object.create(null);
-}, function(modId) { var map = {"./messages":1638492705485}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1638492705485, function(require, module, exports) {
+}, function(modId) { var map = {"./messages":1638838895938}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1638838895938, function(require, module, exports) {
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -2276,7 +2276,7 @@ var Messages = {
 };
 exports.Messages = Messages;
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1638492705486, function(require, module, exports) {
+__DEFINE__(1638838895939, function(require, module, exports) {
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -2349,8 +2349,8 @@ function () {
 }();
 
 exports.Script = Script;
-}, function(modId) { var map = {"./interpreter/main":1638492705484}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1638492705487, function(require, module, exports) {
+}, function(modId) { var map = {"./interpreter/main":1638838895937}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1638838895940, function(require, module, exports) {
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -2365,8 +2365,8 @@ var _default = function _default(code, ctx, options) {
 };
 
 exports.default = _default;
-}, function(modId) { var map = {"./vm":1638492705486}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1638492705488, function(require, module, exports) {
+}, function(modId) { var map = {"./vm":1638838895939}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1638838895941, function(require, module, exports) {
 
 
 Object.defineProperty(exports, "__esModule", {
@@ -2384,8 +2384,8 @@ function _default() {
   var code = args.pop();
   return (0, _vm.compileFunction)(code || "", args);
 }
-}, function(modId) { var map = {"./vm":1638492705486}; return __REQUIRE__(map[modId], modId); })
-return __REQUIRE__(1638492705483);
+}, function(modId) { var map = {"./vm":1638838895939}; return __REQUIRE__(map[modId], modId); })
+return __REQUIRE__(1638838895936);
 })()
 //miniprogram-npm-outsideDeps=["acorn"]
 //# sourceMappingURL=index.js.map

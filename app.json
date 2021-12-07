@@ -17,6 +17,7 @@
     "navigationBarTextStyle": "black"
   },
   "usingComponents": {
+    "mp-html": "mp-html/index",
     "z-picker": "vant-ext/z-picker",
     "z-richtext": "vant-ext/z-richtext"
   },
