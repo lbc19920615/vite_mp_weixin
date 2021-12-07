@@ -3,8 +3,23 @@
 <view class="cm-field cm-field--{{direction}}">
   <view class="cm-field__label">label</view>
   <view class="cm-field__content">
-    <input  maxlength="10" placeholder="最大输入长度为10" bind:input="bindInput" />
-    <input type="number"  maxlength="10" placeholder="最大输入长度为10" bind:input="bindInputNumber" />
+
+<block wx:if="{{ utils.get(uiConfig, ['widget']) === 'CusInput'}}"> 
+  <input  maxlength="10" placeholder="最大输入长度为10" bind:input="bindInput" />
+</block>
+
+<block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusTimePicker'}}"> 
+  <picker mode="time" value="{{item.value}}" bindchange="bindDateChange">
+    <view class="picker">
+      当前选择: {{date}}
+    </view>
+  </picker>
+</block>
+
+<block wx:else>
+需要实现 {{utils.get(uiConfig, ['widget']) }}
+
+  <!-- <input type="number"  maxlength="10" placeholder="最大输入长度为10" bind:input="bindInputNumber" />
 <radio-group bind:change="bindChange">
 <label wx:for="{{options}}"><radio 
 value="{{item.value}}"></radio>{{item.label}}</label>
@@ -21,11 +36,10 @@ value="{{item.value}}"></checkbox>{{item.label}}</label>
 
 />
 
-<!-- {{utils.get(APP_DATA, ['themeVars', '--el-color-white'])}} -->
-
 <z-picker value="{{innerValue}}" options="{{[options]}}" bind:confirm="onCustom">
 {{utils.defVal(innerValue, '请选择')}}
-</z-picker>
+</z-picker> -->
+</block>
 
   
 
