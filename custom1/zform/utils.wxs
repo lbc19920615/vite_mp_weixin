@@ -2,6 +2,14 @@
 var version = "0.1.1";
 
 /**
+ * 是否是数组
+ * @param array 
+ */
+function isArray(array) {
+  return array && array.constructor === 'Array';
+}
+
+/**
  * 类似于lodash get
  * @param obj 
  * @param pathArr 
@@ -11,7 +19,7 @@ function get(obj, pathArr) {
   if (typeof obj === 'undefined' ) {
     return ''
   }
-  if (typeof pathArr !== 'undefined' && pathArr.constructor === 'Array') {
+  if (isArray(pathArr)) {
     arr = pathArr
   }
   if (obj.constructor === 'Object') {
@@ -31,13 +39,6 @@ function get(obj, pathArr) {
   return ''
 }
 
-/**
- * 是否是数组
- * @param array 
- */
-function isArray(array) {
-  return array && array.constructor === 'Array';
-}
 
 /**
  * 如果值是undefined 就使用默认值
