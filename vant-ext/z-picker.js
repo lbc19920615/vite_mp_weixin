@@ -1,38 +1,55 @@
-// vant-ext/z-picker.js
+import { behavior as computedBehavior } from 'miniprogram-computed'
+import com_behavvior from './behavior'
+
 Component({
   options: {
     styleIsolation:'apply-shared'
   },
+  behaviors: [com_behavvior, computedBehavior],
   properties: {
     defaultIndex: {
-      type: Number,
-      value: 0
+      type: Array,
+      value: [0]
+    },
+    options: {
+      type: Array,
+      value: []
+    },
+    value: null
+  },
+
+
+  data: {
+    show: false,
+    pickerIndex: [-1],
+    cachedIndex: [-1],
+    showCom: false
+  },
+  
+  lifetimes: {
+    created() {
+      console.log(this.ext__changeArrData)
+      this.setData({
+        pickerIndex: this.data.defaultIndex
+      })
     }
   },
 
-  /**
-   * 组件的初始数据
-   */
-  data: {
-    show: false,
-    pickerIndex: 0,
-    options: [
-      {
-        label: '1de',
-        value: '1de'
-      },
-      {
-        label: '2de',
-        value: '2de'
-      }
-    ],
-    cachedIndex: -1
+  watch: {
+    value(newVal) {
+      console.log('newval', newVal, this.findIndex(newVal))
+      // this.setData({
+      //   pickerIndex:  this.findIndex(newVal)
+      // })
+    }
   },
 
-  /**
-   * 组件的方法列表
-   */
   methods: {
+    findIndex(value, column = 0) {
+      return this.data.options[column].findIndex((option) => {
+        return option.value === value
+      })
+    },
     onAfterChange() {
       this.setData({
         show: false
@@ -42,29 +59,41 @@ Component({
       console.log(e)
     },
     bindPickerChange(e) {
-      let index = parseFloat(e.detail.value);
-      // console.log('bindChange', index)
+      // let index = parseFloat(e.detail.value);
+      console.log('bindChange', e)
       this.setData({
-        cachedIndex: index
+        cachedIndex: e.detail.value
       })
     },
     showPopup() {
       this.setData({
-        cachedIndex: this.data.defaultIndex,
+        cachedIndex: this.data.pickerIndex,
         show: true,
       })
+      setTimeout(() => {
+        this.setData({
+          showCom: true
+        })
+      }, 100)
     },
     cancel() {
       this.setData({
-        show: false
+        showCom: false,
+        show: false,
       })
     },
     confirm() {
-      let option = this.data.options[this.data.cachedIndex]
+      // console.log(this.data.cachedIndex)
+      let cachedArr = this.data.cachedIndex
+      let optionArr = this.data.options.map((optionColumn, columnIndex) => {
+        return optionColumn[cachedArr[columnIndex]]
+      })
+      let valueArr =optionArr.map(option => option.value)
+      // console.log(option)
       this.triggerEvent('confirm', {
         instanse: this,
-        value: option.value,
-        option
+        value: valueArr,
+        option: optionArr
       })
     }
   }

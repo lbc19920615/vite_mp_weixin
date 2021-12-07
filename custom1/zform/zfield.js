@@ -46,11 +46,11 @@ export function createFieldComponent() {
         return this.getForm(this.data.formId)
       },
       onCustom(e) {
+        console.log(e)
         this.onChange(e.detail.value);
         if (e.detail.instanse.onAfterChange) {
           e.detail.instanse.onAfterChange()
         }
-        console.log(e)
       },
       onChange(v) {
         this.setData({

@@ -1,5 +1,5 @@
 <view class="z-picker">
-  <view bind:tap="showPopup"> <slot></slot>  </view>
+  <view bind:tap="showPopup"> <slot></slot> </view>
   <van-popup
   show="{{ show }}"
 
@@ -18,14 +18,19 @@
       <view class="z-picker__confirm" bind:tap="confirm">决定</view>
     </view>
   </view>
-  <picker-view 
+  <block     wx:if="{{showCom}}">
+    <picker-view 
     class="z-picker__view"
     bind:change="bindPickerChange" 
-    value="{{pickerIndex}}" >
-      <picker-view-column>
-        <view wx:for="{{options}}" wx:key="value" >{{item.value}}</view>
+    value="{{pickerIndex}}" 
+    >
+      <picker-view-column wx:for="{{options}}" wx:for-item="optionColumn">
+        <view wx:for="{{optionColumn}}" wx:for-item="option"  wx:key="value" >{{option.value}}</view>
+        <!-- <view  wx:key="value" >{{item.value}}</view> -->
       </picker-view-column>
-    </picker-view>
+    </picker-view>  
+  </block>
+
 </view>
 </van-popup>
 </view>

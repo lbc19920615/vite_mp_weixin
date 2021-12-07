@@ -15,7 +15,7 @@ value="{{item.value}}"></radio>{{item.label}}</label>
 value="{{item.value}}"></checkbox>{{item.label}}</label>
 </checkbox-group>
 
-<z-picker bind:confirm="onCustom">
+<z-picker value="{{innerValue}}" options="{{[options]}}" bind:confirm="onCustom">
 {{utils.defVal(innerValue, '请选择')}}
 </z-picker>
 
