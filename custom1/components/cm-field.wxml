@@ -15,8 +15,12 @@ value="{{item.value}}"></radio>{{item.label}}</label>
 value="{{item.value}}"></checkbox>{{item.label}}</label>
 </checkbox-group>
 
+<z-picker bind:confirm="onCustom">
+{{utils.defVal(innerValue, '请选择')}}
+</z-picker>
+
     
-<view class="picker">
+<!-- <view class="picker">
       当前选择：{{optionCurrent.value}}
     </view>
   <picker-view 
@@ -26,7 +30,7 @@ value="{{item.value}}"></checkbox>{{item.label}}</label>
     <picker-view-column>
       <view wx:for="{{options}}" wx:key="value" >{{item.value}}</view>
     </picker-view-column>
-  </picker-view>
+  </picker-view> -->
 
 
   </view>

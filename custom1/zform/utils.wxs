@@ -4,6 +4,13 @@ var bar = function(d) {
   return d;
 }
 
+var defVal = function(v, defaultVal) {
+  if (typeof v === 'undefined') {
+    return defaultVal
+  }
+  return v
+}
+
 /**
  * 
  * @param e 获取代码
@@ -16,5 +23,6 @@ function callEvent(e, instanse) {
 module.exports = {
   foo: foo,
   bar: bar,
+  defVal: defVal,
   callEvent: callEvent,
 }

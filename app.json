@@ -16,5 +16,8 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   },
+  "usingComponents": {
+    "z-picker": "vant-ext/z-picker"
+  },
   "sitemapLocation": "sitemap.json"
 }

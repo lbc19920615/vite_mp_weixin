@@ -1,0 +1,33 @@
+<view class="z-picker">
+  <view bind:tap="showPopup"> <slot></slot>  </view>
+  <van-popup
+  show="{{ show }}"
+
+
+  round
+  position="bottom"
+  bind:close="onClose"
+>
+<view class="z-picker__inner">
+  <view class="z-row z-picker__actions">
+    <view class="z-col z-picker__action">
+      <view class="z-picker__cancel" bind:tap="cancel">取消</view>
+  
+    </view>
+    <view class="z-col z-picker__action">
+      <view class="z-picker__confirm" bind:tap="confirm">决定</view>
+    </view>
+  </view>
+  <picker-view 
+    class="z-picker__view"
+    bind:change="bindPickerChange" 
+    value="{{pickerIndex}}" >
+      <picker-view-column>
+        <view wx:for="{{options}}" wx:key="value" >{{item.value}}</view>
+      </picker-view-column>
+    </picker-view>
+</view>
+</van-popup>
+</view>
+
+

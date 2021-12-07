@@ -1,0 +1,17 @@
+/* vant-ext/z-picker.wxss */
+
+.z-picker__view {
+  height: var(--z-picker__view-height, 300px);
+}
+
+.z-picker__actions {
+  padding-top: var(--z-picker__actions-padding-top, 10px);
+  padding-left: var(--z-picker__actions-padding-left, 10px);
+  padding-right: var(--z-picker__actions-padding-right, 10px);
+  box-sizing: border-box;
+  justify-content: var(--z-picker__actions-justify-content, space-between);
+}
+
+.z-picker__action {
+  /* width: var(--z-picker__action-width, 50%); */
+}

@@ -21,6 +21,7 @@ export function createFieldComponent() {
       }
     },
     data: {
+      innerValue: undefined,
       options: [
         {
           label: '1de',
@@ -44,7 +45,17 @@ export function createFieldComponent() {
       getFormRef() {
         return this.getForm(this.data.formId)
       },
+      onCustom(e) {
+        this.onChange(e.detail.value);
+        if (e.detail.instanse.onAfterChange) {
+          e.detail.instanse.onAfterChange()
+        }
+        console.log(e)
+      },
       onChange(v) {
+        this.setData({
+          innerValue: v
+        })
         let form = this.getFormRef();
         form.setModelByPath(this.data.prop,  v)
       },
