@@ -102,6 +102,10 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   color: var(--el-color-primary);
 }
 
+slider .wx-slider-track {
+  background-color:  var(--el-color-primary);
+}
+
 .z-row {
   display: flex;
   align-items: center;

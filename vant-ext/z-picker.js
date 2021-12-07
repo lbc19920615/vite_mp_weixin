@@ -37,7 +37,7 @@ Component({
 
   watch: {
     value(newVal) {
-      console.log('newval', newVal, this.findIndex(newVal))
+      // console.log('newval', newVal, this.findIndex(newVal))
       // this.setData({
       //   pickerIndex:  this.findIndex(newVal)
       // })

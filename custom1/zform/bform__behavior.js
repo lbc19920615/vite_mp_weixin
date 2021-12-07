@@ -6,8 +6,22 @@ let ZY = global.ZY;
 
 module.exports = Behavior({
   data: {
+    APP_DATA: {}
+  },
+  lifetimes: {
+    ready() {
+      this.setData({
+        APP_DATA: this.zform__getGlobalData([])
+      })
+    }
   },
   methods: {
+    zform__getGlobalData(pathArr = []) {
+      let s_path =  ZY.getObjPathFromPathArr(pathArr)
+      let _d =  getApp().globalData;
+      console.log(_d, s_path)
+      return ZY.deepGet(_d, s_path)
+    },
     zform__getObjPathFromPathArr(pathArr) {
       return ZY.getObjPathFromPathArr(pathArr)
     },

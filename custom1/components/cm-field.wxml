@@ -15,23 +15,19 @@ value="{{item.value}}"></radio>{{item.label}}</label>
 value="{{item.value}}"></checkbox>{{item.label}}</label>
 </checkbox-group>
 
+<textarea value="{{item.value}}" bind:blur="bindChange"  disable-default-padding	always-embed  ></textarea>
+
+<slider value="{{item.value}}" bind:change="bindChange"
+
+/>
+
+{{APP_DATA.themeVars}}
+
 <z-picker value="{{innerValue}}" options="{{[options]}}" bind:confirm="onCustom">
 {{utils.defVal(innerValue, '请选择')}}
 </z-picker>
 
-    
-<!-- <view class="picker">
-      当前选择：{{optionCurrent.value}}
-    </view>
-  <picker-view 
-  style="width: 100%; height: 300px;"
-  bind:change="bindPickerChange" 
-  value="{{pickerIndex}}"   >
-    <picker-view-column>
-      <view wx:for="{{options}}" wx:key="value" >{{item.value}}</view>
-    </picker-view-column>
-  </picker-view> -->
-
+  
 
   </view>
 </view>

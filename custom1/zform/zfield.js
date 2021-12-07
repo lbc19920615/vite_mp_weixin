@@ -1,6 +1,7 @@
 import { behavior as computedBehavior } from 'miniprogram-computed'
 import bform__behavior from './bform__behavior'
 
+
 export function createFieldComponent() {
   Component({
     behaviors: [bform__behavior, computedBehavior],
@@ -53,6 +54,7 @@ export function createFieldComponent() {
       }
     },
     methods: {
+
       getFormRef() {
         return this.getForm(this.data.formId)
       },

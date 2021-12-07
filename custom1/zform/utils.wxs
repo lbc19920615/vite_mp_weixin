@@ -1,7 +1,9 @@
 
 var foo = "'hello world' from comm.wxs";
-var bar = function(d) {
-  return d;
+
+
+function isArray(array) {
+  return array && array.constructor === 'Array';
 }
 
 var defVal = function(v, defaultVal) {
@@ -26,7 +28,7 @@ function callEvent(e, instanse) {
 }
 module.exports = {
   foo: foo,
-  bar: bar,
+  isArray: isArray,
   isUnDef: isUnDef,
   defVal: defVal,
   callEvent: callEvent,
