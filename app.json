@@ -17,7 +17,8 @@
     "navigationBarTextStyle": "black"
   },
   "usingComponents": {
-    "z-picker": "vant-ext/z-picker"
+    "z-picker": "vant-ext/z-picker",
+    "z-richtext": "vant-ext/z-richtext"
   },
   "sitemapLocation": "sitemap.json"
 }

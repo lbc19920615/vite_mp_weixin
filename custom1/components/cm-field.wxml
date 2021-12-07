@@ -15,10 +15,11 @@
     </view>
   </picker>
 </block>
-
+<block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusRichText'}}"> 
+  <z-richtext html-content="  {{ utils.get(uiConfig, ['widgetConfig', 'html_content']) }} "></z-richtext>
+</block>
 <block wx:else>
 需要实现 {{utils.get(uiConfig, ['widget']) }}
-
   <!-- <input type="number"  maxlength="10" placeholder="最大输入长度为10" bind:input="bindInputNumber" />
 <radio-group bind:change="bindChange">
 <label wx:for="{{options}}"><radio 
