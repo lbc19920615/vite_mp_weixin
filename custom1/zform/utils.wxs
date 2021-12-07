@@ -2,6 +2,14 @@
 var version = "0.1.1";
 
 /**
+ * 判断是否未定义
+ * @param v 
+ */
+var isUnDef = function(v) {
+  return typeof v === 'undefined'
+}
+
+/**
  * 是否是数组
  * @param array 
  */
@@ -13,11 +21,12 @@ function isArray(array) {
  * 类似于lodash get
  * @param obj 
  * @param pathArr 
+ * @param defaultVal
  */
-function get(obj, pathArr) {
+function get(obj, pathArr, defaultVal) {
   var arr = []; 
   if (typeof obj === 'undefined' ) {
-    return ''
+    return defaultVal
   }
   if (isArray(pathArr)) {
     arr = pathArr
@@ -25,7 +34,7 @@ function get(obj, pathArr) {
   if (obj.constructor === 'Object') {
     var cur = obj;
 
-    arr.every(function(item, index) {
+    var isEvery = arr.every(function(item, index) {
       if (typeof cur[item] === 'undefined') {
         return false;
       } else {
@@ -33,10 +42,13 @@ function get(obj, pathArr) {
         return true;
       }
     });
-    // console.log(JSON.stringify(cur))
+    if (!isEvery) {
+      return defaultVal
+    }
+    // console.log(isEvery, JSON.stringify(cur))
     return cur
   }
-  return ''
+  return defaultVal
 }
 
 
@@ -52,13 +64,7 @@ var defVal = function(v, defaultVal) {
   return v
 }
 
-/**
- * 判断是否未定义
- * @param v 
- */
-var isUnDef = function(v) {
-  return typeof v === 'undefined'
-}
+
 
 /**
  * 调用事件
