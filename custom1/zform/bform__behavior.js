@@ -19,7 +19,7 @@ module.exports = Behavior({
     zform__getGlobalData(pathArr = []) {
       let s_path =  ZY.getObjPathFromPathArr(pathArr)
       let _d =  getApp().globalData;
-      console.log(_d, s_path)
+      // console.log(_d, s_path)
       return ZY.deepGet(_d, s_path)
     },
     zform__getObjPathFromPathArr(pathArr) {
