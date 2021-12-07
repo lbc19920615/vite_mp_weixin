@@ -25,7 +25,7 @@ Component({
       let ZY = this.ext_ZY();
       try {
         let obj = ZY.JSON5.parse(this.data.htmlContent);
-        console.log(obj);
+        // console.log(obj);
         this.setData({
           html: obj.html
         })
