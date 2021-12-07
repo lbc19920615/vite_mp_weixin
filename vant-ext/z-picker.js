@@ -28,7 +28,7 @@ Component({
   
   lifetimes: {
     created() {
-      console.log(this.ext__changeArrData)
+      // console.log(this.ext__changeArrData)
       this.setData({
         pickerIndex: this.data.defaultIndex
       })

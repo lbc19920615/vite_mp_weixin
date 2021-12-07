@@ -1,9 +1,9 @@
 
+  <wxs src="../zform/utils.wxs" module="utils"></wxs>
+
   <view class="http-com comformscr2">
     <view class="z-form http-com-part http-com-part__">
-      <slot-com binds="{{ { a: 1 } }}" name="form_afterbegin"
-      form-id="{{uuid}}"
-      ></slot-com>
+      <slot-com binds="{{ { a: 1 } }}" name="form_afterbegin" form-id="{{ uuid  }}"></slot-com>
       
          
 <view class="level_1 z-form__object " labelPostion='top' label-position='top' 
@@ -24,7 +24,9 @@ type="string"
 sub_type="undefined"
 path-arr="{{['field__znE17X3L4G']}}"
 part_key="parts.form_V033_p"
+form-path="model.field__znE17X3L4G"
 form-id="{{uuid}}"
+config-path="def.properties.field__znE17X3L4G"
 >
 
 </cm-field>
@@ -43,7 +45,9 @@ type="string"
 sub_type="time"
 path-arr="{{['field__Q2r0LTemeo']}}"
 part_key="parts.form_V033_p"
+form-path="model.field__Q2r0LTemeo"
 form-id="{{uuid}}"
+config-path="def.properties.field__Q2r0LTemeo"
 >
 
 </cm-field>
@@ -62,7 +66,9 @@ type="string"
 sub_type="time"
 path-arr="{{['field__TSjNqnDLCQ']}}"
 part_key="parts.form_V033_p"
+form-path="model.field__TSjNqnDLCQ"
 form-id="{{uuid}}"
+config-path="def.properties.field__TSjNqnDLCQ"
 >
 
 </cm-field>
@@ -81,7 +87,9 @@ type="string"
 sub_type="undefined"
 path-arr="{{['field__KZxgpust9N']}}"
 part_key="parts.form_V033_p"
+form-path="model.field__KZxgpust9N"
 form-id="{{uuid}}"
+config-path="def.properties.field__KZxgpust9N"
 >
 
 </cm-field>
@@ -91,8 +99,6 @@ form-id="{{uuid}}"
 
 </view>
 
-      <slot-com binds="{{ { a: 1 } }}" name="form_afterend"
-      form-id="{{uuid}}"
-      ></slot-com>
+      <slot-com binds="{{ { a: 1 } }}" name="form_afterend" form-id="{{ uuid  }}"></slot-com>
     </view>
   </view>

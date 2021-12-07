@@ -18,6 +18,12 @@ export function createFieldComponent() {
       },
       binds: {
         type: Object
+      },
+      pathArr: {
+        type: Array
+      },
+      configPath: {
+        type: String
       }
     },
     data: {
@@ -34,11 +40,16 @@ export function createFieldComponent() {
       ],
       direction: 'left',
       pickerIndex: 0,
-      optionCurrent: {}
+      optionCurrent: {},
+      fieldPath: ''
     },
     lifetimes: {
       ready() {
-        // console.log(this.test1)
+        let config = this.zform__getFieldConfig(this.data.formId,  this.data.configPath);
+        console.log(config)
+        this.setData({
+          fieldPath: this.zform__getObjPathFromPathArr(this.data.pathArr)
+        })
       }
     },
     methods: {

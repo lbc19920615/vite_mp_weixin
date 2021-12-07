@@ -52,6 +52,9 @@ export function createFormComponent({
     },
   
     methods: {
+      getFormConfig() {
+        return formDef
+      },
       setModelByPath(path, val) {
         let s_path = 'model.' + path
         this.setData({
