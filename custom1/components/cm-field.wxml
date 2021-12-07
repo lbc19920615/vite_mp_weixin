@@ -1,6 +1,8 @@
 <wxs src="../zform/utils.wxs" module="utils" />
 
-<view class="cm-field cm-field--dir-{{utils.get(formWigetConfig, ['label-position'])}}">
+<view class="cm-field cm-field--dir-{{utils.get(formWigetConfig, ['label-position'])}}"
+wx:if="{{inited}}"
+>
   <view class="cm-field__label">{{ utils.get(uiConfig, ['label']) }}</view>
   <view class="cm-field__content">
 
@@ -28,7 +30,7 @@
   <z-richtext html-content="  {{ utils.get(uiConfig, ['widgetConfig', 'html_content']) }} "></z-richtext>
 </block>
 <block wx:else>
-需要实现 {{utils.get(uiConfig, ['widget']) }}
+<view class="cm-field__warn" wx:if="{{debug}}">需要实现 {{utils.get(uiConfig, ['widget']) }}</view>
   <!-- <input type="number"  maxlength="10" placeholder="最大输入长度为10" bind:input="bindInputNumber" />
 <radio-group bind:change="bindChange">
 <label wx:for="{{options}}"><radio 

@@ -26,6 +26,9 @@ export function createFieldComponent() {
       },
       configPath: {
         type: String
+      },
+      debug: {
+        type: Boolean
       }
     },
     data: {
@@ -44,7 +47,8 @@ export function createFieldComponent() {
       pickerIndex: 0,
       optionCurrent: {},
       fieldPath: '',
-      uiConfig: {}
+      inited: false,
+      uiConfig: {},
     },
     lifetimes: {
       ready() {
@@ -54,7 +58,8 @@ export function createFieldComponent() {
         this.setData({
           fieldPath: this.zform__getObjPathFromPathArr(this.data.pathArr),
           uiConfig: config?.ui ?? {},
-          formWigetConfig: form.zformi_formWidgetConfig()
+          formWigetConfig: form.zformi_formWidgetConfig(),
+          inited: true
         })
       }
     },
