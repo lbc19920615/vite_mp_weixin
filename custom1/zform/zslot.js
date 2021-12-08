@@ -24,13 +24,30 @@ export function createSlotComponent() {
       },
       formId: {
         type: String
-      }
+      },
+      pathArr: {
+        type: Array
+      },
+      configPath: {
+        type: String
+      },
     },
 
     data: {
-      
+      inited: false,
+      config: {},
     },
-
+    lifetimes: {
+      ready() {
+        let _config = this.zform__getFieldConfig(this.data.formId,  this.data.configPath);
+        this.setData({
+          config: _config,
+          inited: true
+        })
+        // console.log(this.getForm(this.data.formId));
+        // console.log('slot ready', _config)
+      }
+    },
     methods: {
       getFormRef() {
         return this.getForm(this.data.formId)
@@ -46,11 +63,6 @@ export function createSlotComponent() {
         })
       }
     },
-    lifetimes: {
-      ready() {
-        // console.log(this.getForm(this.data.formId));
-        // console.log('slot ready')
-      }
-    }
+    
   })
 }

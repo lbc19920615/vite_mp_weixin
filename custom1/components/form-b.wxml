@@ -5,19 +5,23 @@
     <view class="z-form http-com-part http-com-part__">
       <slot-com binds="{{ { a: 1 } }}" name="form_afterbegin" form-id="{{ uuid  }}"></slot-com>
       
-         
+<slot-com  name="object_beforebegin"  
+form-id="{{uuid}}" config-path="def"></slot-com>          
 <view class="level_1 z-form__object " labelPostion='top' label-position='top' 
 binds="{{ {a: 1} }}"
 wx:if="{{model}}"
 >
+<slot-com  name="object_afterbegin"  
+form-id="{{uuid}}" config-path="def"></slot-com> 
 
-
-
+<slot-com  name="prop_beforebegin"  
+form-id="{{uuid}}" config-path="def.properties.field__znE17X3L4G"></slot-com>   
 <view class="level_2 z-form__prop " 
-
-
 style=""
-><cm-field
+>
+<slot-com  name="prop_afterbegin"  
+form-id="{{uuid}}" config-path="def.properties.field__znE17X3L4G"></slot-com>
+<cm-field
 class="z-form__field"
 label="field__znE17X3L4G" 
 prop="field__znE17X3L4G" 
@@ -31,15 +35,20 @@ config-path="def.properties.field__znE17X3L4G"
 >
 
 </cm-field>
-            
+<slot-com  name="prop_beforeend"  
+form-id="{{uuid}}" config-path="def.properties.field__znE17X3L4G"></slot-com>            
 </view>
+<slot-com  name="prop_afterend"  
+form-id="{{uuid}}" config-path="def.properties.field__znE17X3L4G"></slot-com>   
 
-
+<slot-com  name="prop_beforebegin"  
+form-id="{{uuid}}" config-path="def.properties.field__rCN7FDLAj3"></slot-com>   
 <view class="level_2 z-form__prop " 
-
-
 style=""
-><cm-field
+>
+<slot-com  name="prop_afterbegin"  
+form-id="{{uuid}}" config-path="def.properties.field__rCN7FDLAj3"></slot-com>
+<cm-field
 class="z-form__field"
 label="field__rCN7FDLAj3" 
 prop="field__rCN7FDLAj3" 
@@ -53,15 +62,20 @@ config-path="def.properties.field__rCN7FDLAj3"
 >
 
 </cm-field>
-            
+<slot-com  name="prop_beforeend"  
+form-id="{{uuid}}" config-path="def.properties.field__rCN7FDLAj3"></slot-com>            
 </view>
+<slot-com  name="prop_afterend"  
+form-id="{{uuid}}" config-path="def.properties.field__rCN7FDLAj3"></slot-com>   
 
-
+<slot-com  name="prop_beforebegin"  
+form-id="{{uuid}}" config-path="def.properties.field__TSjNqnDLCQ"></slot-com>   
 <view class="level_2 z-form__prop " 
-
-
 style=""
-><cm-field
+>
+<slot-com  name="prop_afterbegin"  
+form-id="{{uuid}}" config-path="def.properties.field__TSjNqnDLCQ"></slot-com>
+<cm-field
 class="z-form__field"
 label="field__TSjNqnDLCQ" 
 prop="field__TSjNqnDLCQ" 
@@ -75,15 +89,20 @@ config-path="def.properties.field__TSjNqnDLCQ"
 >
 
 </cm-field>
-            
+<slot-com  name="prop_beforeend"  
+form-id="{{uuid}}" config-path="def.properties.field__TSjNqnDLCQ"></slot-com>            
 </view>
+<slot-com  name="prop_afterend"  
+form-id="{{uuid}}" config-path="def.properties.field__TSjNqnDLCQ"></slot-com>   
 
-
+<slot-com  name="prop_beforebegin"  
+form-id="{{uuid}}" config-path="def.properties.field__dD5oS9xNi7"></slot-com>   
 <view class="level_2 z-form__prop " 
-
-
 style=""
-><cm-field
+>
+<slot-com  name="prop_afterbegin"  
+form-id="{{uuid}}" config-path="def.properties.field__dD5oS9xNi7"></slot-com>
+<cm-field
 class="z-form__field"
 label="field__dD5oS9xNi7" 
 prop="field__dD5oS9xNi7" 
@@ -97,15 +116,20 @@ config-path="def.properties.field__dD5oS9xNi7"
 >
 
 </cm-field>
-            
+<slot-com  name="prop_beforeend"  
+form-id="{{uuid}}" config-path="def.properties.field__dD5oS9xNi7"></slot-com>            
 </view>
+<slot-com  name="prop_afterend"  
+form-id="{{uuid}}" config-path="def.properties.field__dD5oS9xNi7"></slot-com>   
 
-
+<slot-com  name="prop_beforebegin"  
+form-id="{{uuid}}" config-path="def.properties.field__rKrKlUFzvu"></slot-com>   
 <view class="level_2 z-form__prop " 
-
-
 style=""
-><cm-field
+>
+<slot-com  name="prop_afterbegin"  
+form-id="{{uuid}}" config-path="def.properties.field__rKrKlUFzvu"></slot-com>
+<cm-field
 class="z-form__field"
 label="field__rKrKlUFzvu" 
 prop="field__rKrKlUFzvu" 
@@ -119,15 +143,20 @@ config-path="def.properties.field__rKrKlUFzvu"
 >
 
 </cm-field>
-            
+<slot-com  name="prop_beforeend"  
+form-id="{{uuid}}" config-path="def.properties.field__rKrKlUFzvu"></slot-com>            
 </view>
+<slot-com  name="prop_afterend"  
+form-id="{{uuid}}" config-path="def.properties.field__rKrKlUFzvu"></slot-com>   
 
-
+<slot-com  name="prop_beforebegin"  
+form-id="{{uuid}}" config-path="def.properties.field__KZxgpust9N"></slot-com>   
 <view class="level_2 z-form__prop " 
-
-
 style=""
-><cm-field
+>
+<slot-com  name="prop_afterbegin"  
+form-id="{{uuid}}" config-path="def.properties.field__KZxgpust9N"></slot-com>
+<cm-field
 class="z-form__field"
 label="field__KZxgpust9N" 
 prop="field__KZxgpust9N" 
@@ -141,11 +170,17 @@ config-path="def.properties.field__KZxgpust9N"
 >
 
 </cm-field>
-            
+<slot-com  name="prop_beforeend"  
+form-id="{{uuid}}" config-path="def.properties.field__KZxgpust9N"></slot-com>            
 </view>
+<slot-com  name="prop_afterend"  
+form-id="{{uuid}}" config-path="def.properties.field__KZxgpust9N"></slot-com>   
 
-
+<slot-com  name="object_beforeend"  
+form-id="{{uuid}}" config-path="def"></slot-com> 
 </view>
+<slot-com  name="object_afterend"  
+form-id="{{uuid}}" config-path="def"></slot-com> 
 
       <slot-com binds="{{ { a: 1 } }}" name="form_afterend" form-id="{{ uuid  }}"></slot-com>
     </view>

@@ -1,11 +1,16 @@
 
-    <wxs src="../zform/utils.wxs" module="utils"></wxs>
+<wxs src="../zform/utils.wxs" module="utils"></wxs>
 
-    
 <template name="form_afterend">
 <view   bind:tap="callEvent" data-event-name="1111"   >1111</view>
 </template>
 
 
-    <template is="{{ name }}" data="{{ binds }}"></template>
+<template name="prop_afterbegin">
+<!-- <view     >{{utils.get(config, ['ui', 'label'])}}</view> -->
+</template>
+
+<block wx:if="{{ inited }}">
+<template is="{{ name }}" data="{{ name, config, binds }}"></template>
+</block>
   
