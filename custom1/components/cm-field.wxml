@@ -7,54 +7,74 @@ wx:if="{{inited}}"
   <view class="cm-field__content">
 
 <block wx:if="{{ utils.get(uiConfig, ['widget']) === 'CusInput'}}"> 
-  <input  maxlength="10" placeholder="最大输入长度为10" bind:input="bindInput" />
+<block  wx:if="{{ utils.get(uiConfig, ['widgetConfig', 'type']) === 'textarea'}}">
+
+  <textarea value="{{item.value}}" bind:blur="bindChange"  disable-default-padding	always-embed  ></textarea>
+</block>
+ <block wx:else="">
+  <input  maxlength="10" placeholder="{{ utils.get(uiConfig, [ 'widgetConfig', 'placeholder'])}}" bind:input="bindInput" />
+ </block>
 </block>
 
+
 <block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusTimePicker'}}"> 
-  <picker mode="time" value="{{item.value}}" bindchange="bindDateChange">
-    <view class="picker">
-      当前选择: {{date}}
-    </view>
-  </picker>
+<picker mode="time" value="{{item.value}}" bindchange="bindDateChange">
+<view class="cm-field__picker-toggle">
+当前选择: {{date}}
+</view>
+</picker>
 </block>
 
 <block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusDateTimePicker'}}"> 
-  <picker mode="date" value="{{item.value}}" bindchange="bindDateChange">
-    <view class="picker">
-      当前选择: {{date}}
-    </view>
-  </picker>
+<picker mode="date" value="{{item.value}}" bindchange="bindDateChange">
+<view class="cm-field__picker-toggle">
+当前选择: {{date}}
+</view>
+</picker>
+</block>
+
+<block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusSelect'}}"> 
+<z-picker value="{{innerValue}}" options="{{[options]}}" bind:confirm="onCustom">
+<view class="cm-field__picker-toggle">
+当前选择: {{utils.defVal(innerValue, '')}}
+</view>
+</z-picker> 
+</block>
+
+<block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusSlider'}}"> 
+<slider value="{{item.value}}" bind:change="bindChange"></slider>
+</block>
+
+<block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusRate'}}"> 
+<van-rate color="#ffd21e" value="{{item.value}}" bind:change="bindChange"></van-rate>
 </block>
 
 <block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusRichText'}}"> 
-  <z-richtext html-content="  {{ utils.get(uiConfig, ['widgetConfig', 'html_content']) }} "></z-richtext>
+<z-richtext html-content="  {{ utils.get(uiConfig, ['widgetConfig', 'html_content']) }} "></z-richtext>
 </block>
-<block wx:else>
-<view class="cm-field__warn" wx:if="{{debug}}">需要实现 {{utils.get(uiConfig, ['widget']) }}</view>
-  <!-- <input type="number"  maxlength="10" placeholder="最大输入长度为10" bind:input="bindInputNumber" />
-<radio-group bind:change="bindChange">
-<label wx:for="{{options}}"><radio 
-value="{{item.value}}"></radio>{{item.label}}</label>
-</radio-group>
 
+<block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusCheckbox'}}"> 
 <checkbox-group bind:change="bindChange">
 <label wx:for="{{options}}"><checkbox 
 value="{{item.value}}"></checkbox>{{item.label}}</label>
 </checkbox-group>
+</block>
 
-<textarea value="{{item.value}}" bind:blur="bindChange"  disable-default-padding	always-embed  ></textarea>
+<block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusRadio'}}"> 
+<radio-group bind:change="bindChange">
+<label wx:for="{{options}}"><radio 
+value="{{item.value}}"></radio>{{item.label}}</label>
+</radio-group>
+</block>
 
-<slider value="{{item.value}}" bind:change="bindChange"
 
-/>
 
-<z-picker value="{{innerValue}}" options="{{[options]}}" bind:confirm="onCustom">
-{{utils.defVal(innerValue, '请选择')}}
-</z-picker> -->
+<block wx:else>
+<view class="cm-field__warn" wx:if="{{debug}}">需要实现 {{utils.get(uiConfig, ['widget']) }}</view>
 </block>
 
   
 
   </view>
-  <view class="cm-field__label">{{ utils.get(uiConfig, ['desc']) }}</view>
+  <view class="cm-field__desc">{{ utils.get(uiConfig, ['desc']) }}</view>
 </view>
