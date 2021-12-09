@@ -1,2 +1,2 @@
-<!-- <mp-html content="{{html}}"></mp-html> -->
-<rich-text nodes="{{html}}"></rich-text>
+<mp-html content="{{html}}"></mp-html>
+<!-- <rich-text nodes="{{html}}"></rich-text> -->
