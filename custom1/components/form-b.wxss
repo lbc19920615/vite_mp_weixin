@@ -1,0 +1,8 @@
+.cm-field--field__KZxgpust9N rich-text {
+background-color:rgba(22, 159, 131, 0.6);
+color:rgba(254, 254, 254, 1)
+}
+
+.cm-field--field__KZxgpust9N rich-text .w-e-p {
+  margin: 10px 0;
+}

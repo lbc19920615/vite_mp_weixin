@@ -4,6 +4,9 @@ import bform__behavior from './bform__behavior'
 
 export function createFieldComponent() {
   Component({
+    options: {
+      styleIsolation: 'apply-shared',
+    },
     behaviors: [bform__behavior, computedBehavior],
     // externalClasses: ['class'],
     relations: {

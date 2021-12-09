@@ -2,13 +2,12 @@
   margin: 20px;
 }
 
-.w-e-content-container {
-  background-color: #429285;
-}
-
 .z-form__field {
   display: block;
   margin-bottom: 10px;
 }
+
+
+
 
 @import 'index-wxa-auto-dark.wxss'

@@ -7,7 +7,7 @@
 
 
 <template name="prop_afterbegin">
-<!-- <view     >{{utils.get(config, ['ui', 'label'])}}</view> -->
+<view     >prop后面</view>
 </template>
 
 <block wx:if="{{ inited }}">

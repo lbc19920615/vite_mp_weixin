@@ -1,0 +1,6 @@
+rich-text {
+  display: block;
+  overflow: hidden;
+}
+
+ 

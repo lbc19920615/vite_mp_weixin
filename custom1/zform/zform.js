@@ -9,7 +9,7 @@ export function createFormComponent({
   Component({
     behaviors: [bform__behavior, computedBehavior],
     options: {
-      styleIsolation: 'apply-shared'
+      styleIsolation: 'shared'
     },
     relations: {
       'bform__behavior': {
