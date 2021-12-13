@@ -3,6 +3,14 @@ import { getGlobal } from './utils'
 let global = getGlobal();
 let forms = new Map();
 let ZY = global.ZY;
+let formMetas = new Map();
+
+function getOrInitFormMeta(id, v) {
+  if (!formMetas.has(id)) {
+    formMetas.set(id, {})
+  }
+  return formMetas.get(id)
+}
 
 module.exports = Behavior({
   data: {
@@ -29,6 +37,14 @@ module.exports = Behavior({
       let form = forms.get(formId)
       let config = form.getFormConfig()
       return ZY.deepGet(config, configPath)
+    },
+    zform__setMeta(formId, path, value) {
+      let meta = getOrInitFormMeta(formId);
+      ZY.lodash.set(meta, path, value)
+    },
+    zform__gettMeta(formId, path) {
+      let meta = getOrInitFormMeta(formId);
+      return  ZY.lodash.get(meta, path)
     },
     registerForm(key, ctx) {
       forms.set(key, ctx);

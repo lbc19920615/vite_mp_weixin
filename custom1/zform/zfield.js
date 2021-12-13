@@ -52,6 +52,7 @@ export function createFieldComponent() {
       fieldPath: '',
       inited: false,
       uiConfig: {},
+      validCls: ''
     },
     lifetimes: {
       ready() {
@@ -72,7 +73,7 @@ export function createFieldComponent() {
         return this.getForm(this.data.formId)
       },
       onCustom(e) {
-        console.log(e)
+        // console.log(e)
         this.onChange(e.detail.value);
         if (e.detail.instanse.onAfterChange) {
           e.detail.instanse.onAfterChange()
@@ -83,7 +84,10 @@ export function createFieldComponent() {
           innerValue: v
         })
         let form = this.getFormRef();
-        form.setModelByPath(this.data.prop,  v)
+        form.setModelByPath(this.data.prop,  v);
+        wx.nextTick(() => {
+          form.validateField(this.data.fieldPath);
+        })
       },
       bindInput(e) {
         // console.log('bindInput', e)
@@ -105,6 +109,16 @@ export function createFieldComponent() {
         console.log('bindChange', index)
         this.setData({
           optionCurrent: this.data.options[index]
+        })
+      },
+      setErrState() {
+        this.setData({
+          validCls: 'error'
+        })
+      },
+      clearErrState() {
+        this.setData({
+          validCls: ''
         })
       }
     }

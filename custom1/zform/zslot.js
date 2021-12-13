@@ -54,11 +54,11 @@ export function createSlotComponent() {
       },
       callEvent: function(e) {
         // console.log(e)
-        this.getFormRef().handleEvent({
+        this.getFormRef().zform___handleEvent({
           type: e.type,
           detail: e.detail,
           dataset: e.target.dataset,
-          e,
+          origin: e,
           ctx: this
         })
       }

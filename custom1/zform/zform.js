@@ -6,6 +6,20 @@ let global = getGlobal();
 export function createFormComponent({
   formDef
 } = {}) {
+  let ZY = global.ZY;
+  // console.log(ZY);
+  let lastErrors = [];
+  function delFindError(errorField) {
+    if (!lastErrors) {
+      lastErrors = []
+    }
+    let index = lastErrors.findIndex(lastError => {
+      return lastError.field === errorField
+    });
+    if (index > - 1) {
+      lastErrors.splice(index, 1)
+    }
+  }
   Component({
     behaviors: [bform__behavior, computedBehavior],
     options: {
@@ -22,17 +36,6 @@ export function createFormComponent({
     data: {
       formName: formDef.name,
       uuid: 'zform__' + global.ZY.rid(10),
-      // list: [
-      //   {
-      //     id: 1
-      //   },
-      //   {
-      //     id: 2
-      //   },
-      //   {
-      //     id: 3
-      //   },
-      // ],
       model_str: '',
       model: {},
       formConfig: {},
@@ -55,7 +58,13 @@ export function createFormComponent({
           formUIConfig: formUIConfig,
           formWidgetConfig: Object.fromEntries(formUIConfig.attrs)
         })
-        console.log('form created', this.data)
+        // console.log('form created', this.data)
+        this.zform__setMeta(this.data.uuid, 'descriptor', {
+          field__znE17X3L4G: {
+            type: 'string',
+            required: true,
+          }
+        })
       },
       ready() {
         // this.test1()
@@ -76,8 +85,95 @@ export function createFormComponent({
           [s_path]: val
         })
       },
-      handleEvent(e) {
-        console.log(e)
+      zform___handleEvent(e) {
+        // console.log(e);
+        let {eventName} = e.dataset;
+        // console.log(eventName);
+        // this.validate();
+        this.triggerEvent(eventName, {
+          ...e,
+          form: this
+        })
+      },
+      findField(fields, fieldPath) {
+        return fields.find(field => {
+          return field.data.fieldPath === fieldPath
+        })
+      },
+      getDescriptor() {
+        let descriptor = this.zform__gettMeta(this.data.uuid, 'descriptor');
+        return descriptor
+      },
+      getValidator(descriptor) {
+        let Schema = global.ZY.Schema;
+        return new Schema(descriptor);
+      },
+      // 参考elemennt form https://element-plus.gitee.io/zh-CN/component/form.html#form-%E6%96%B9%E6%B3%95
+      /**
+       * 
+       * @param cb Function(callback: Function(boolean, object))
+       */
+      validate(cb) {
+        let self = this;
+        
+        let fieldEles = self.selectAllComponents('.z-form__field');
+        let descriptor = self.getDescriptor();
+        // console.log(descriptor)
+        const validator = self.getValidator(descriptor);
+    
+        validator.validate(self.data.model, (errors, fields) => {
+          // console.log(errors, fields);
+          let isValid = !errors;
+          console.log(isValid)
+          ZY.lodash.each(errors, function(error)  {
+            delFindError(error.field);
+            self.findField(fieldEles, error.field)?.setErrState()
+            console.log( self.findField(fieldEles, error.field))
+          })
+          // // console.log(lastErrors);
+          // /**
+          //  * 之前犯的错误 这次不存在 就要收回
+          //  */
+          // ZY.lodash.each(lastErrors, function(error)  {
+          //   self.findField(fieldEles, error.field)?.clearErrState()
+          // });
+          // lastErrors = errors;
+          // cb(isValid, errors);
+        });
+      },
+      /**
+       * validateField
+       * @param {string | string[]} fieldPath 
+       */
+      validateField(fieldPath) {
+        let self = this;
+        let fieldEles = self.selectAllComponents('.z-form__field');
+        let descriptor = self.getDescriptor();
+        let desc = ZY.lodash.get(descriptor, fieldPath)
+        const validator = self.getValidator({
+          [fieldPath]: desc
+        });
+        let model = {
+          [fieldPath]:  ZY.lodash.get(this.data.model, fieldPath)
+        }
+        // console.log(model)
+        validator.validate(model, (errors, fields) => {
+          let isValid = !errors;
+          let f = self.findField(fieldEles, fieldPath);
+          if (isValid) {
+            delFindError(fieldPath);
+        
+            // console.log(f);
+            // console.log(error)
+            f?.clearErrState()
+          } else {
+            f?.setErrState()
+          }
+      
+        })
+      },
+      clearValidate() {
+        
       }
     },
     
