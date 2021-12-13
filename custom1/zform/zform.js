@@ -131,14 +131,14 @@ export function createFormComponent({
             console.log( self.findField(fieldEles, error.field))
           })
           // // console.log(lastErrors);
-          // /**
-          //  * 之前犯的错误 这次不存在 就要收回
-          //  */
-          // ZY.lodash.each(lastErrors, function(error)  {
-          //   self.findField(fieldEles, error.field)?.clearErrState()
-          // });
-          // lastErrors = errors;
-          // cb(isValid, errors);
+          /**
+           * 之前犯的错误 这次不存在 就要收回
+           */
+          ZY.lodash.each(lastErrors, function(error)  {
+            self.findField(fieldEles, error.field)?.clearErrState()
+          });
+          lastErrors = errors;
+          cb(isValid, errors);
         });
       },
       /**
@@ -172,8 +172,23 @@ export function createFormComponent({
       
         })
       },
-      clearValidate() {
-        
+      /**
+       * clearValidate
+       * @param {*} props 
+       */
+      clearValidate(props) {
+        let self = this;
+        let fieldEles = self.selectAllComponents('.z-form__field');
+        if (Array.isArray(props)) {
+          fieldEles = fieldEles.filter(v => {
+            return props.includes(v.data.fieldPath)
+          })
+        }
+        ZY.lodash.each(fieldEles, function(fieldEle)  {
+          fieldEle.clearErrState();
+          delFindError(fieldEle.fieldPath)
+        });
+
       }
     },
     
