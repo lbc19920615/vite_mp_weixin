@@ -1,9 +1,10 @@
 import {global} from '/zform-common/globals';
-import  eval5 from 'eval5'
+// import axios from 'axios-miniprogram';
+import  eval5 from 'eval5';
 // global.eval5 = eval5
 global.ZY_EXT = {
   eval5
-}
+};
 
 let themeVars =  {
   '--el-color-white': '#ffffff',
