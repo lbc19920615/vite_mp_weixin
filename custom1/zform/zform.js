@@ -32,6 +32,9 @@ export function createFormComponent({
       }
     },
     properties: {
+      formHeight: {
+        type: String
+      }
     },
     data: {
       formName: formDef.name,
@@ -124,11 +127,11 @@ export function createFormComponent({
         validator.validate(self.data.model, (errors, fields) => {
           // console.log(errors, fields);
           let isValid = !errors;
-          console.log(isValid)
+          // console.log(isValid)
           ZY.lodash.each(errors, function(error)  {
             delFindError(error.field);
             self.findField(fieldEles, error.field)?.setErrState()
-            console.log( self.findField(fieldEles, error.field))
+            // console.log( self.findField(fieldEles, error.field))
           })
           // // console.log(lastErrors);
           /**
@@ -188,7 +191,28 @@ export function createFormComponent({
           fieldEle.clearErrState();
           delFindError(fieldEle.fieldPath)
         });
-
+      },
+      scrollToField(field) {
+        let self = this;
+        const query = wx.createSelectorQuery().in(this)
+        query.select('#scrollview')
+        .node()
+        .exec((res) => {
+          const scrollView = res[0].node;
+          console.log(scrollView)
+          scrollView.scrollIntoView('#z-form__prop__' + field)
+        })
+        // query.select('.z-form__field__TSjNqnDLCQ')
+        // .boundingClientRect();
+        // query.selectViewport().scrollOffset()
+        // query.exec(function(res){
+        //   // console.log(res)
+        //   wx.pageScrollTo({
+        //     // scrollTop: res[0].top
+        //     selector: '.z-form__field__TSjNqnDLCQ'
+        //   })
+        // })
+    
       }
     },
     

@@ -4,8 +4,9 @@ Page({
   },
   onSubmitForm(e) {
     let { form } = e.detail;
-    form.validate((isValid, errors) => {
-      console.log(isValid, errors)
-    });
+    form.scrollToField('field__TSjNqnDLCQ')
+    // form.validate((isValid, errors) => {
+    //   console.log(isValid, errors)
+    // });
   }
 })

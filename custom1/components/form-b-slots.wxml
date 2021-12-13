@@ -2,6 +2,7 @@
 <wxs src="../zform/utils.wxs" module="utils"></wxs>
 
 <template name="form_afterend">
+<view style="height: 700px;"></view>
 <view   bind:tap="callEvent" data-event-name="form-submit"   >submit</view>
 </template>
 
