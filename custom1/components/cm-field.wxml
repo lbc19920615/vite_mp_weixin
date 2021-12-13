@@ -42,11 +42,11 @@ wx:if="{{inited}}"
 </block>
 
 <block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusSlider'}}"> 
-<slider value="{{item.value}}" bind:change="bindChange"></slider>
+<slider active-color="{{utils.get(APP_DATA, ['themeVars', '--zform-slider-active-color'])}}" value="{{item.value}}" bind:change="bindChange"></slider>
 </block>
 
 <block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusRate'}}"> 
-<van-rate color="#ffd21e" value="{{item.value}}" bind:change="bindChange"></van-rate>
+<van-rate color="{{utils.get(APP_DATA, ['themeVars', '--zform-rate-color'])}}" value="{{item.value}}" bind:change="bindChange"></van-rate>
 </block>
 
 <block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusRichText'}}"> 
