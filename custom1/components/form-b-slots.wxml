@@ -8,7 +8,7 @@
 
 
 <template name="prop_afterbegin">
-<view     >prop后面</view>
+<view     ></view>
 </template>
 
 <block wx:if="{{ inited }}">
