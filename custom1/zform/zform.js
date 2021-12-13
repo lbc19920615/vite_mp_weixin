@@ -9,6 +9,7 @@ export function createFormComponent({
   let ZY = global.ZY;
   // console.log(ZY);
   let lastErrors = [];
+  let FIELD_CLS = '.z-form__field';
   function delFindError(errorField) {
     if (!lastErrors) {
       lastErrors = []
@@ -103,6 +104,9 @@ export function createFormComponent({
           return field.data.fieldPath === fieldPath
         })
       },
+      zform__getFieldEles() {
+        return this.selectAllComponents(FIELD_CLS);
+      },
       getDescriptor() {
         let descriptor = this.zform__gettMeta(this.data.uuid, 'descriptor');
         return descriptor
@@ -119,7 +123,7 @@ export function createFormComponent({
       validate(cb) {
         let self = this;
         
-        let fieldEles = self.selectAllComponents('.z-form__field');
+        let fieldEles = self.selectAllComponents(FIELD_CLS);
         let descriptor = self.getDescriptor();
         // console.log(descriptor)
         const validator = self.getValidator(descriptor);
@@ -150,7 +154,7 @@ export function createFormComponent({
        */
       validateField(fieldPath) {
         let self = this;
-        let fieldEles = self.selectAllComponents('.z-form__field');
+        let fieldEles = self.selectAllComponents(FIELD_CLS);
         let descriptor = self.getDescriptor();
         let desc = ZY.lodash.get(descriptor, fieldPath)
         const validator = self.getValidator({
@@ -181,7 +185,7 @@ export function createFormComponent({
        */
       clearValidate(props) {
         let self = this;
-        let fieldEles = self.selectAllComponents('.z-form__field');
+        let fieldEles = self.selectAllComponents(FIELD_CLS);
         if (Array.isArray(props)) {
           fieldEles = fieldEles.filter(v => {
             return props.includes(v.data.fieldPath)

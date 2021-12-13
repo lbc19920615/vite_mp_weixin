@@ -1,3 +1,6 @@
 <view class="wrapper">
-  <form-a class="cus-form" form-height="500px" bind:form-submit="onSubmitForm"></form-a>
+  <form-a class="cus-form" form-height="500px" 
+  bind:form-submit="onSubmitForm"
+  bind:form-scroll="onSubmitScroll"
+  ></form-a>
 </view>
