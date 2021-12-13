@@ -35,7 +35,7 @@ module.exports = Behavior({
     },
     zform__getFieldConfig(formId, configPath) {
       let form = forms.get(formId)
-      let config = form.getFormConfig()
+      let config = form.zformi__getFormConfig()
       return ZY.deepGet(config, configPath)
     },
     zform__setMeta(formId, path, value) {

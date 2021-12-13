@@ -60,14 +60,13 @@ export function createFieldComponent() {
         let fieldPath = this.zform__getObjPathFromPathArr(this.data.pathArr);
         let form = this.getFormRef();
         if (Array.isArray(config.rules) && config.rules.length > 0) {
-          console.log(config)
-          form.zform__updateRules(fieldPath, config.rules)
+          // console.log(config)
+          form.zformi__updateRules(fieldPath, config.rules)
         }
-        // console.log(form.zformi_formWidgetConfig());
         this.setData({
           fieldPath: fieldPath,
           uiConfig: config?.ui ?? {},
-          formWigetConfig: form.zformi_formWidgetConfig(),
+          formWigetConfig: form.zformi__formWidgetConfig(),
           inited: true
         })
       }
@@ -89,7 +88,7 @@ export function createFieldComponent() {
           innerValue: v
         })
         let form = this.getFormRef();
-        form.setModelByPath(this.data.prop,  v);
+        form.zformi__setModelByPath(this.data.prop,  v);
         wx.nextTick(() => {
           form.validateField(this.data.fieldPath);
         })

@@ -74,23 +74,23 @@ export function createFormComponent({
     },
   
     methods: {
-      zformi_formWidgetConfig() {
+      zformi__formWidgetConfig() {
         return this.data.formWidgetConfig
       },
-      getFormConfig() {
+      zformi__getFormConfig() {
         return formDef
       },
-      setModelByPath(path, val) {
+      zformi__setModelByPath(path, val) {
         let s_path = 'model.' + path
         this.setData({
           // ['model_str']: Date.now(),
           [s_path]: val
         })
       },
-      zform__updateRules(fieldPath, rules) {
+      zformi__updateRules(fieldPath, rules) {
         this.zform__setMeta(this.data.uuid, ['descriptor', fieldPath], rules)
       },
-      zform___handleEvent(e) {
+      zformi___handleEvent(e) {
         // console.log(e);
         let {eventName} = e.dataset;
         // console.log(eventName);
