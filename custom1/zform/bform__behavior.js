@@ -40,7 +40,8 @@ module.exports = Behavior({
     },
     zform__setMeta(formId, path, value) {
       let meta = getOrInitFormMeta(formId);
-      ZY.lodash.set(meta, path, value)
+      ZY.lodash.set(meta, path, value);
+      // console.log(formMetas)
     },
     zform__gettMeta(formId, path) {
       let meta = getOrInitFormMeta(formId);

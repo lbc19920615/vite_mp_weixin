@@ -4,7 +4,8 @@ import {getGlobal} from './utils'
 let global = getGlobal();
 
 export function createFormComponent({
-  formDef
+  formDef,
+  onCreated
 } = {}) {
   let ZY = global.ZY;
   // console.log(ZY);
@@ -61,14 +62,11 @@ export function createFormComponent({
           formConfig: formDef?.def,
           formUIConfig: formUIConfig,
           formWidgetConfig: Object.fromEntries(formUIConfig.attrs)
-        })
+        });
+        if (onCreated && onCreated.bind) {
+          onCreated.bind(this)()
+        }
         // console.log('form created', this.data)
-        this.zform__setMeta(this.data.uuid, 'descriptor', {
-          field__znE17X3L4G: {
-            type: 'string',
-            required: true,
-          }
-        })
       },
       ready() {
         // this.test1()
@@ -88,6 +86,9 @@ export function createFormComponent({
           // ['model_str']: Date.now(),
           [s_path]: val
         })
+      },
+      zform__updateRules(fieldPath, rules) {
+        this.zform__setMeta(this.data.uuid, ['descriptor', fieldPath], rules)
       },
       zform___handleEvent(e) {
         // console.log(e);

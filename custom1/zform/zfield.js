@@ -57,10 +57,15 @@ export function createFieldComponent() {
     lifetimes: {
       ready() {
         let config = this.zform__getFieldConfig(this.data.formId,  this.data.configPath);
+        let fieldPath = this.zform__getObjPathFromPathArr(this.data.pathArr);
         let form = this.getFormRef();
+        if (Array.isArray(config.rules) && config.rules.length > 0) {
+          console.log(config)
+          form.zform__updateRules(fieldPath, config.rules)
+        }
         // console.log(form.zformi_formWidgetConfig());
         this.setData({
-          fieldPath: this.zform__getObjPathFromPathArr(this.data.pathArr),
+          fieldPath: fieldPath,
           uiConfig: config?.ui ?? {},
           formWigetConfig: form.zformi_formWidgetConfig(),
           inited: true
