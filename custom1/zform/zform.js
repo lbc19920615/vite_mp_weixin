@@ -36,6 +36,10 @@ export function createFormComponent({
     properties: {
       formHeight: {
         type: String
+      },
+      propIdPrefix: {
+        type: String,
+        value: 'z-form__prop__'
       }
     },
     data: {
@@ -204,8 +208,8 @@ export function createFormComponent({
         .node()
         .exec((res) => {
           const scrollView = res[0].node;
-          console.log(scrollView)
-          scrollView.scrollIntoView('#z-form__prop__' + field)
+          // console.log(scrollView)
+          scrollView.scrollIntoView('#' + this.data.propIdPrefix + field)
         })
         // query.select('.z-form__field__TSjNqnDLCQ')
         // .boundingClientRect();

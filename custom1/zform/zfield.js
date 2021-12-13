@@ -63,6 +63,7 @@ export function createFieldComponent() {
           // console.log(config)
           form.zformi__updateRules(fieldPath, config.rules)
         }
+        // console.log(form.zformi_formWidgetConfig());
         this.setData({
           fieldPath: fieldPath,
           uiConfig: config?.ui ?? {},
