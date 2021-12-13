@@ -40,6 +40,10 @@ export function createFormComponent({
       propIdPrefix: {
         type: String,
         value: 'z-form__prop__'
+      },
+      scrollViewId:{
+        type: String,
+        value: 'scrollview'
       }
     },
     data: {
@@ -204,7 +208,7 @@ export function createFormComponent({
       scrollToField(field) {
         let self = this;
         const query = wx.createSelectorQuery().in(this)
-        query.select('#scrollview')
+        query.select('#' + this.data.scrollViewId)
         .node()
         .exec((res) => {
           const scrollView = res[0].node;

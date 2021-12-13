@@ -2,7 +2,7 @@
   <wxs src="../zform/utils.wxs" module="utils"></wxs>
 
   <view class="http-com comformscr2 form-b">
-    <scroll-view enhanced="" scroll-y="true" scroll-with-animation="true" style="height: {{ formHeight }};" id="scrollview" class="z-form http-com-part http-com-part__">
+    <scroll-view enhanced="" scroll-y="true" scroll-with-animation="true" style="height: {{ formHeight }};" id="{{scrollViewId}}" class="z-form http-com-part http-com-part__">
       <slot-com binds="{{ { a: 1 } }}" name="form_afterbegin" form-id="{{ uuid  }}"></slot-com>
       
 <slot-com  name="object_beforebegin"  
