@@ -1,6 +1,7 @@
 import { behavior as computedBehavior } from 'miniprogram-computed'
 import bform__behavior from './bform__behavior'
-
+import {getGlobal} from './utils'
+let global = getGlobal();
 
 export function createFieldComponent() {
   Component({
@@ -37,14 +38,14 @@ export function createFieldComponent() {
     data: {
       innerValue: undefined,
       options: [
-        {
-          label: '1de',
-          value: '1de'
-        },
-        {
-          label: '2de',
-          value: '2de'
-        }
+        // {
+        //   label: '1de',
+        //   value: '1de'
+        // },
+        // {
+        //   label: '2de',
+        //   value: '2de'
+        // }
       ],
       direction: 'left',
       pickerIndex: 0,
@@ -57,6 +58,7 @@ export function createFieldComponent() {
     lifetimes: {
       ready() {
         let config = this.zform__getFieldConfig(this.data.formId,  this.data.configPath);
+        this.zfieldi__handleConfig(config);
         let fieldPath = this.zform__getObjPathFromPathArr(this.data.pathArr);
         let form = this.getFormRef();
         if (Array.isArray(config.rules) && config.rules.length > 0) {
@@ -73,7 +75,19 @@ export function createFieldComponent() {
       }
     },
     methods: {
-
+      zfieldi__handleConfig(config) {
+        let widgetConfig = global.ZY.lodash.get(config, ['ui', 'widgetConfig'])
+        // console.log(widgetConfig)
+        if (widgetConfig.options2) {
+         try {
+            this.setData({
+              options:  global.ZY.JSON5.parse(widgetConfig.options2)
+            })
+         } catch(e) {
+            console.error(e)
+         }
+        }
+      },
       getFormRef() {
         return this.getForm(this.data.formId)
       },

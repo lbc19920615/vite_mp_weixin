@@ -1,4 +1,3 @@
 
-    import { createSlotComponent } from '../zform/zslot';
-    createSlotComponent();
-  
+import { createSlotComponent } from '../zform/zslot';
+createSlotComponent();
