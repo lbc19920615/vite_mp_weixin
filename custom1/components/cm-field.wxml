@@ -9,16 +9,16 @@ wx:if="{{inited}}"
 <block wx:if="{{ utils.get(uiConfig, ['widget']) === 'CusInput'}}"> 
 <block  wx:if="{{ utils.get(uiConfig, ['widgetConfig', 'type']) === 'textarea'}}">
 
-  <textarea value="{{item.value}}" bind:blur="bindChange"  disable-default-padding	always-embed  ></textarea>
+  <textarea value="{{innerValue}}" bind:blur="bindChange"  disable-default-padding	always-embed  ></textarea>
 </block>
- <block wx:else="">
-  <input  maxlength="10" placeholder="{{ utils.get(uiConfig, [ 'widgetConfig', 'placeholder'])}}" bind:input="bindInput" />
+ <block wx:else=""> 
+  <input value="{{innerValue}}"  maxlength="10" placeholder="{{ utils.get(uiConfig, [ 'widgetConfig', 'placeholder'])}}" bind:input="bindInput" />
  </block>
 </block>
 
 
 <block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusTimePicker'}}"> 
-<picker mode="time" value="{{item.value}}" bindchange="bindDateChange">
+<picker mode="time" value="{{item.value}}" bind:change="bindDateChange">
 <view class="cm-field__picker-toggle">
 当前选择: {{date}}
 </view>
@@ -26,7 +26,7 @@ wx:if="{{inited}}"
 </block>
 
 <block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusDateTimePicker'}}"> 
-<picker mode="date" value="{{item.value}}" bindchange="bindDateChange">
+<picker mode="date" value="{{item.value}}" bind:change="bindDateChange">
 <view class="cm-field__picker-toggle">
 当前选择: {{date}}
 </view>

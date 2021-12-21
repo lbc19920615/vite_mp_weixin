@@ -2,5 +2,6 @@
   <form-a class="cus-form" form-height="500px" 
   bind:form-submit="onSubmitForm"
   bind:form-scroll="onSubmitScroll"
+  debug="{{true}}"
   ></form-a>
 </view>

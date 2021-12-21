@@ -1,16 +1,26 @@
 import { behavior as computedBehavior } from 'miniprogram-computed'
 import bform__behavior from './bform__behavior'
-import {getGlobal} from './utils'
+import {getGlobal, flattenObject, findArrIsAllInArr} from './utils'
 let global = getGlobal();
+
+
 
 export function createFormComponent({
   formDef,
   onCreated
 } = {}) {
   let ZY = global.ZY;
+  let watchHandleMap = new Map();
+  let fieldsMap = new Map();
   // console.log(ZY);
   let lastErrors = [];
   let FIELD_CLS = '.z-form__field';
+  let modelLocks = false;
+  let lodash = ZY.lodash;
+  let JSON5 = ZY.JSON5;
+  let cachedModel  = '{}';
+
+
   function delFindError(errorField) {
     if (!lastErrors) {
       lastErrors = []
@@ -44,6 +54,9 @@ export function createFormComponent({
       scrollViewId:{
         type: String,
         value: 'scrollview'
+      },
+      debug: {
+        type: Boolean
       }
     },
     data: {
@@ -59,7 +72,29 @@ export function createFormComponent({
         console.log('model_str', newVal)
       },
       ['model.**']: function(newVal) {
-        console.log('model', newVal)
+        // console.log('model', newVal)
+        let objKeys = Object.keys(newVal)
+        let oldObj = JSON5.parse(cachedModel)
+        let diffed = ZY.diff(oldObj, newVal);
+        let flattenD = flattenObject(diffed);
+        if (!modelLocks) {
+          let flattenDKeys = Object.keys(flattenD);
+          watchHandleMap.forEach(function (item, key) {
+            // console.log(item, key)
+            let isContains = lodash.difference(key, objKeys).length < 1;
+            let flattenDHas = findArrIsAllInArr(key, flattenDKeys);
+            console.log(isContains, flattenDHas, key, flattenDKeys)
+            if (isContains && flattenDHas) {
+              console.log('changed', key, )
+              modelLocks = true
+              item.run(newVal);
+              setTimeout(() => {
+                modelLocks = false
+              }, 300)
+            }
+            // console.log(objKeys, key, isContains)
+          })
+        }
       }
     },
     lifetimes: {
@@ -94,9 +129,23 @@ export function createFormComponent({
           // ['model_str']: Date.now(),
           [s_path]: val
         })
+        console.log('zformi__setModelByPath', path, val, this.data.model)
       },
       zformi__updateRules(fieldPath, rules) {
         this.zform__setMeta(this.data.uuid, ['descriptor', fieldPath], rules)
+      },
+      zformi__setPropAndUpdate(path, val) {
+        // this.zformi__setModelByPath(path, val);
+        let fieldCtx = fieldsMap.get(path);
+        // console.log(path, fieldsMap, fieldCtx)
+        if (fieldCtx) {
+          if (fieldCtx.zfieldi__handleForceUpdate) {
+            fieldCtx.zfieldi__handleForceUpdate(val)
+          }
+        }
+      },
+      zformi__resgisterField(key, value) {
+        fieldsMap.set(key, value)
       },
       zformi___handleEvent(e) {
         // console.log(e);
@@ -115,6 +164,12 @@ export function createFormComponent({
       },
       zform__getFieldEles() {
         return this.selectAllComponents(FIELD_CLS);
+      },
+      /**
+       * 注册监听事件
+       */
+      zformi__registerWatchHandle(key, value) {
+        watchHandleMap.set(key, value)
       },
       getDescriptor() {
         let descriptor = this.zform__gettMeta(this.data.uuid, 'descriptor');
@@ -165,28 +220,34 @@ export function createFormComponent({
         let self = this;
         let fieldEles = self.selectAllComponents(FIELD_CLS);
         let descriptor = self.getDescriptor();
-        let desc = ZY.lodash.get(descriptor, fieldPath)
-        const validator = self.getValidator({
-          [fieldPath]: desc
-        });
-        let model = {
-          [fieldPath]:  ZY.lodash.get(this.data.model, fieldPath)
-        }
-        // console.log(model)
-        validator.validate(model, (errors, fields) => {
-          let isValid = !errors;
-          let f = self.findField(fieldEles, fieldPath);
-          if (isValid) {
-            delFindError(fieldPath);
-        
-            // console.log(f);
-            // console.log(error)
-            f?.clearErrState()
-          } else {
-            f?.setErrState()
+        let desc = ZY.lodash.get(descriptor, fieldPath);
+        if (desc) {
+          const validator = self.getValidator({
+            [fieldPath]: desc
+          });
+          let model = {
+            [fieldPath]:  ZY.lodash.get(this.data.model, fieldPath)
           }
-      
-        })
+          // console.log(model);
+          // console.log({
+          //   [fieldPath]: desc
+          // })
+          validator.validate(model, (errors, fields) => {
+            let isValid = !errors;
+            let f = self.findField(fieldEles, fieldPath);
+            if (isValid) {
+              delFindError(fieldPath);
+          
+              // console.log(f);
+              // console.log(error)
+              f?.clearErrState()
+            } else {
+              f?.setErrState()
+            }
+        
+          })
+        }
+
       },
       /**
        * clearValidate

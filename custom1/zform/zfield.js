@@ -31,9 +31,9 @@ export function createFieldComponent() {
       configPath: {
         type: String
       },
-      debug: {
-        type: Boolean
-      }
+      // debug: {
+      //   type: Boolean
+      // }
     },
     data: {
       innerValue: undefined,
@@ -47,6 +47,7 @@ export function createFieldComponent() {
         //   value: '2de'
         // }
       ],
+      debug: false,
       direction: 'left',
       pickerIndex: 0,
       optionCurrent: {},
@@ -57,10 +58,52 @@ export function createFieldComponent() {
     },
     lifetimes: {
       ready() {
+        const ZY = global.ZY;
+
+
+        function parseComputedFun(computedFun = '', eval5 = global.ZY_EXT.eval5) {
+          let keys = []
+          let modelFun = Array.of(...computedFun.matchAll(/(MODEL\()[^\\)]*\)/g))
+          let modelStr = modelFun.map( v => v[0]).join(';')
+          // console.log(modelStr)
+          eval5(modelStr, {
+            MODEL(key) {
+              keys.push(key)
+            }
+          });
+          // console.log(keys);
+          return {
+            keys
+          }
+        }
+
         let config = this.zform__getFieldConfig(this.data.formId,  this.data.configPath);
         this.zfieldi__handleConfig(config);
         let fieldPath = this.zform__getObjPathFromPathArr(this.data.pathArr);
         let form = this.getFormRef();
+        // console.log(config);
+        if (config.computedFun) {
+          let pathArr = this.data.pathArr;
+          let computedFun  = config.computedFun ;
+          let parsed = parseComputedFun(computedFun)
+          form.zformi__registerWatchHandle(parsed.keys, {
+            run(model) {
+              // console.log(computedFun)
+              let val = global.ZY_EXT.eval5(computedFun, {
+                ...global.ZY.COM_FORM_COMMON_EVAL_FUNS,
+                MODEL(v, defaultVal) {
+                  return ZY.lodash.get(model, v, defaultVal)
+                }
+              });
+              let str = ZY.getObjPathFromPathArr(pathArr);
+              console.log(str)
+              // ZY.lodash.set(model, str, val)
+              wx.nextTick(() => {
+                form.zformi__setPropAndUpdate(str,  val);
+              })
+            }
+          })
+        }
         if (Array.isArray(config.rules) && config.rules.length > 0) {
           // console.log(config)
           form.zformi__updateRules(fieldPath, config.rules)
@@ -68,13 +111,19 @@ export function createFieldComponent() {
         // console.log(form.zformi_formWidgetConfig());
         this.setData({
           fieldPath: fieldPath,
+          debug: form.data.debug,
           uiConfig: config?.ui ?? {},
           formWigetConfig: form.zformi__formWidgetConfig(),
           inited: true
-        })
+        });
+        form.zformi__resgisterField(fieldPath, this)
       }
     },
     methods: {
+      zfieldi__handleForceUpdate(newVal) {
+        console.log('newVal', newVal)
+        this.onChange(newVal)
+      },
       zfieldi__handleConfig(config) {
         let widgetConfig = global.ZY.lodash.get(config, ['ui', 'widgetConfig'])
         // console.log(widgetConfig)
@@ -122,6 +171,13 @@ export function createFieldComponent() {
       bindChange(e) {
         // console.log('bindChange', e)
         this.onChange(e.detail.value)
+      },
+      bindDateChange(e) {
+  //  console.log('bindDateChange', e)
+   this.onChange(e.detail.value);
+   this.setData({
+     date: e.detail.value
+   })
       },
       bindPickerChange(e) {
         let index = parseFloat(e.detail.value);
