@@ -1,8 +1,13 @@
 <wxs src="../zform/utils.wxs" module="utils" />
-<import src="./form-b-custom" />
 
-<view class="cm-field cm-field--{{fieldPath}} cm-field--dir-{{utils.get(formWigetConfig, ['label-position'])}}  cm-field--{{validCls}} "
-wx:if="{{inited}}"
+
+<!-- <template wx:if="{{inited}}" is="base-cm-field" data="{{uiConfig, formWigetConfig, fieldPath, date, APP_DATA, innerValue, options}}"></template> -->
+
+<block wx:if="{{inited}}">
+
+
+  <view class="cm-field cm-field--{{fieldPath}} cm-field--dir-{{utils.get(formWigetConfig, ['label-position'])}}  cm-field--{{validCls}} "
+
 >
   <view class="cm-field__label">{{ utils.get(uiConfig, ['label']) }}</view>
   <view class="cm-field__content">
@@ -22,7 +27,7 @@ wx:if="{{inited}}"
 </block>
 
 <block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusTimePicker'}}"> 
-<picker mode="time" value="{{item.value}}" bind:change="bindDateChange">
+<picker mode="time" value="{{innerValue}}" bind:change="bindDateChange">
 <view class="cm-field__picker-toggle">
 当前选择: {{date}}
 </view>
@@ -77,7 +82,8 @@ value="{{item.value}}"></radio>{{item.label}}</label>
 
   <block wx:if="{{ utils.get(uiConfig, ['custom'])}}"> 
     <!-- <cus-slot generic:selectable="cus-com"></cus-slot> -->
-    <template is="cm-field-tpl__{{utils.kebabCase(utils.get(uiConfig, ['cusWidget']))}}" data="{{uiConfig}}"></template>
+    <!-- <template is="cm-field-tpl__{{utils.kebabCase(utils.get(uiConfig, ['cusWidget']))}}" data="{{uiConfig}}"></template> -->
+    <include src="./cm-custom"></include>
   </block>
 
   <block wx:else>
@@ -91,3 +97,4 @@ value="{{item.value}}"></radio>{{item.label}}</label>
   </view>
   <view class="cm-field__desc">{{ utils.get(uiConfig, ['desc']) }}</view>
 </view>
+</block>

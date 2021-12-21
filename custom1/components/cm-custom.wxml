@@ -1,0 +1,3 @@
+<import src="./form-b-custom.wxml" />
+
+<template is="cm-field-tpl__{{utils.kebabCase(utils.get(uiConfig, ['cusWidget']))}}" data="{{uiConfig}}"></template>
