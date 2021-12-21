@@ -171,6 +171,10 @@ export function createFieldComponent() {
         }
         this.onChange(v)
       },
+      bindCusChange(e) {
+        // console.log('bindChange', e)
+        this.onChange(e.detail.value)
+      },
       bindChange(e) {
         // console.log('bindChange', e)
         this.onChange(e.detail.value)

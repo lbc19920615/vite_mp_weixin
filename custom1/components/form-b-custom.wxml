@@ -1,6 +1,6 @@
 <wxs src="../zform/utils.wxs" module="utils" />
 
 <template name="cm-field-tpl__cus-com">
-  {{utils.kebabCase(utils.get(uiConfig, ['cusWidget']))}}
-<cus-com bind:tap="bindTap"></cus-com>
+  <!-- {{utils.kebabCase(utils.get(uiConfig, ['cusWidget']))}} -->
+<cus-com bind:zform_change="bindCusChange"></cus-com>
 </template>

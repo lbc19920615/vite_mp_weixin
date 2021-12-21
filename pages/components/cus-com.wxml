@@ -1,2 +1,5 @@
 <!--pages/components/cus-com.wxml-->
-<text>pages/components/cus-com.wxml</text>
+<view class="cus-com">
+  <text>自定义pages/components/cus-com.wxml</text>
+  <input type="text" bind:change="bindChange"/>
+</view>

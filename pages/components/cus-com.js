@@ -18,6 +18,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    bindChange(e) {
+      this.triggerEvent('zform_change', e.detail)
+    }
   }
 })
