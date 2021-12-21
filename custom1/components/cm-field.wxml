@@ -1,4 +1,5 @@
 <wxs src="../zform/utils.wxs" module="utils" />
+<import src="./form-b-custom" />
 
 <view class="cm-field cm-field--{{fieldPath}} cm-field--dir-{{utils.get(formWigetConfig, ['label-position'])}}  cm-field--{{validCls}} "
 wx:if="{{inited}}"
@@ -73,7 +74,16 @@ value="{{item.value}}"></radio>{{item.label}}</label>
 
 
 <block wx:else>
-<view class="cm-field__warn" wx:if="{{debug}}">需要实现 {{utils.get(uiConfig, ['widget']) }}</view>
+
+  <block wx:if="{{ utils.get(uiConfig, ['custom'])}}"> 
+    <!-- <cus-slot generic:selectable="cus-com"></cus-slot> -->
+    <template is="cm-field-tpl__{{utils.kebabCase(utils.get(uiConfig, ['cusWidget']))}}" data="{{uiConfig}}"></template>
+  </block>
+
+  <block wx:else>
+    <view class="cm-field__warn" wx:if="{{debug}}">需要实现 {{utils.get(uiConfig, ['widget']) }}</view>
+  </block>
+
 </block>
 
   

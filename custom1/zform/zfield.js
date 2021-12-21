@@ -157,6 +157,9 @@ export function createFieldComponent() {
           form.validateField(this.data.fieldPath);
         })
       },
+      bindTap(e) {
+        console.log('bindTap', e)
+      },
       bindInput(e) {
         // console.log('bindInput', e)
         this.onChange(e.detail.value)

@@ -1,5 +1,5 @@
 
-var version = "0.1.1";
+var version = "0.2.1";
 
 /**
  * 判断是否未定义
@@ -75,11 +75,24 @@ function callEvent(e, instanse) {
   // console.log(instanse.callMethod)
   instanse.callMethod('callEvent', {e: e})
 }
+
+function kebabCase(word) {
+  var newWord = word
+    .replace(getRegExp("[A-Z]", 'g'), function (i) {
+      return '-' + i;
+    })
+    .toLowerCase()
+    .replace(getRegExp("^-"), '');
+
+  return newWord;
+}
+
 module.exports = {
   version: version,
   get: get,
   isArray: isArray,
   isUnDef: isUnDef,
   defVal: defVal,
+  kebabCase: kebabCase,
   callEvent: callEvent,
 }
