@@ -16,6 +16,9 @@ wx:if="{{inited}}"
  </block>
 </block>
 
+<block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusInputNumber'}}"> 
+  <input type="number" value="{{innerValue}}"  maxlength="10" placeholder="{{ utils.get(uiConfig, [ 'widgetConfig', 'placeholder'])}}" bind:input="bindInput" />
+</block>
 
 <block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusTimePicker'}}"> 
 <picker mode="time" value="{{item.value}}" bind:change="bindDateChange">
