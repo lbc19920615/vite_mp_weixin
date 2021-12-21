@@ -3,6 +3,6 @@
     "component": true,
     "usingComponents": {
         "slot-com": "form-b-slots",
-        "cm-field": "cm-field"
+        "cm-field": "../zform/cm-field"
     }
 }

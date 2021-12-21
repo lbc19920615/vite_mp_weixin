@@ -1,2 +1,0 @@
-<!--custom1/components/cus-slot.wxml-->11
-<selectable disabled="{{false}}"></selectable>

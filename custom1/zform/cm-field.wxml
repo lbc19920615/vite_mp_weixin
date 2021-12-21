@@ -1,4 +1,4 @@
-<wxs src="../zform/utils.wxs" module="utils" />
+<wxs src="./utils.wxs" module="utils" />
 
 
 <!-- <template wx:if="{{inited}}" is="base-cm-field" data="{{uiConfig, formWigetConfig, fieldPath, date, APP_DATA, innerValue, options}}"></template> -->
