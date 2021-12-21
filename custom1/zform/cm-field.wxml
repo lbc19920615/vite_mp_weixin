@@ -83,7 +83,7 @@ value="{{item.value}}"></radio>{{item.label}}</label>
   <block wx:if="{{ utils.get(uiConfig, ['custom'])}}"> 
     <!-- <cus-slot generic:selectable="cus-com"></cus-slot> -->
     <!-- <template is="cm-field-tpl__{{utils.kebabCase(utils.get(uiConfig, ['cusWidget']))}}" data="{{uiConfig}}"></template> -->
-    <include src="./cm-field-custom.wxml"></include>
+    <include src="../cm-field-custom.wxml"></include>
     <template is="cm-field-tpl__{{utils.kebabCase(utils.get(uiConfig, ['cusWidget']))}}" data="{{uiConfig}}"></template>
   </block>
 
