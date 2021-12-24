@@ -6,6 +6,9 @@ global.ZY_EXT = {
   eval5
 };
 
+const env = wx.getAccountInfoSync().miniProgram.envVersion;
+global.env  = env;
+
 import {initRequestLib, context} from './zform-common/request/index';
 let { request }  = initRequestLib({
   ajaxConfig: {
