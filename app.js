@@ -6,13 +6,13 @@ global.ZY_EXT = {
   eval5
 };
 
-const env = wx.getAccountInfoSync().miniProgram.envVersion;
-global.env  = env;
+import env, {envVersion} from './env.js';
 
+console.log(env, envVersion)
 import {initRequestLib, context} from './zform-common/request/index';
 let { request }  = initRequestLib({
   ajaxConfig: {
-    baseURL: 'http://192.168.1.57:15001'
+    baseURL: env.MP_AXIOS_URL
   }
 });
 context.Message = function({ message = '',
