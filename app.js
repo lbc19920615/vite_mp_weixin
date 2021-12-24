@@ -7,7 +7,11 @@ global.ZY_EXT = {
 };
 
 import {initRequestLib, context} from './zform-common/request/index';
-let { request }  = initRequestLib();
+let { request }  = initRequestLib({
+  ajaxConfig: {
+    baseURL: 'http://192.168.1.57:15001'
+  }
+});
 context.Message = function({ message = '',
   type = 'error',
   duration = 5 * 1000} = {}) {

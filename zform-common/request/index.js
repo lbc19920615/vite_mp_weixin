@@ -7,7 +7,11 @@ export let context = {
   Message: null
 }
 
-function initRequestLib() {
+/**
+ * 初始化ajax库
+ * @param {*} ajaxConfig 
+ */
+function initRequestLib({ajaxConfig = {} } = {}) {
   function showTip(msg = '') {
     // console.dir({
     //   message: msg,
@@ -29,8 +33,8 @@ function initRequestLib() {
    * 也就是没有**取消请求**和**批量请求**的方法。
    * 所以如果需要在实例中调用取消某个请求的方法（例如取消上传），请用intactRequest。
    */
-  const intactRequest = setConfig(axios)
-  const request = setConfig(intactRequest.create())
+  const intactRequest = setConfig(axios, ajaxConfig)
+  const request = setConfig(intactRequest.create(), ajaxConfig)
   
   // 请求中的api
   const pendingPool = new Map()

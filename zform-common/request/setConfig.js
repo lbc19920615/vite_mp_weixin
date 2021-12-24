@@ -3,6 +3,7 @@
  * @param {config} 自定义配置对象，可覆盖掉默认的自定义配置
  */
 export default (axios, config = {}) => {
+  // console.log(config)
   const defaultConfig = {
     baseURL: '',
     timeout: 10000,
@@ -24,6 +25,6 @@ export default (axios, config = {}) => {
     }
   }
 
-  Object.assign(axios.defaults, defaultConfig, config)
+  Object.assign(axios.defaults, defaultConfig, config);
   return axios
 }
