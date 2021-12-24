@@ -6,6 +6,19 @@ global.ZY_EXT = {
   eval5
 };
 
+import {initRequestLib, context} from './zform-common/request/index';
+let { request }  = initRequestLib();
+context.Message = function({ message = '',
+  type = 'error',
+  duration = 5 * 1000} = {}) {
+  wx.showToast({
+    icon: type,
+    title: message,
+    duration,
+  })
+}
+global.Req = request
+
 let themeVars =  {
   '--el-color-white': '#ffffff',
   '--el-color-black': '#000000',

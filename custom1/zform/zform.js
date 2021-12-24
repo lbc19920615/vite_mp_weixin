@@ -117,6 +117,9 @@ export function createFormComponent({
     },
   
     methods: {
+      getModel() {
+        return this.data.model
+      },
       zformi__formWidgetConfig() {
         return this.data.formWidgetConfig
       },

@@ -5,7 +5,8 @@ Page({
   onSubmitForm(e) {
     let { form } = e.detail;
     form.validate((isValid, errors) => {
-      console.log(isValid, errors)
+      // console.log(isValid, errors, form.getModel())
+      let model = form.getModel()
     });
   },
   onSubmitScroll(e) {
