@@ -8,7 +8,7 @@ global.ZY_EXT = {
 
 import env, {envVersion} from './env.js';
 
-console.log(env, envVersion)
+// console.log(env, envVersion)
 import {initRequestLib, context} from './zform-common/request/index';
 let { request }  = initRequestLib({
   ajaxConfig: {
@@ -24,7 +24,10 @@ context.Message = function({ message = '',
     duration,
   })
 }
-global.Req = request
+global.Req = request;
+
+import {install as installChinaArea } from './lib/chinaArea/index.js';
+installChinaArea(global)
 
 let themeVars =  {
   '--el-color-white': '#ffffff',
