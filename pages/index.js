@@ -1,6 +1,14 @@
 Page({
-  onReady() {
+  data: {
+    height: 0
+  },
+  onLoad() {
     // console.log('all forms', this.selectAllComponents('.cus-form'))
+    let data = wx.getSystemInfoSync();
+    let height = data.windowHeight * .9; 
+    this.setData({
+      height
+    })
   },
   onSubmitForm(e) {
     let { form } = e.detail;

@@ -1,5 +1,5 @@
 <view class="wrapper reset-wux">
-  <form-a class="cus-form" form-height="500px" 
+  <form-a class="cus-form" form-height="{{height}}px" 
   bind:form-submit="onSubmitForm"
   bind:form-scroll="onSubmitScroll"
   debug="{{true}}"
