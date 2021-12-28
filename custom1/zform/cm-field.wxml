@@ -77,10 +77,12 @@ value="{{item.value}}"></radio>{{item.label}}</label>
 </block>
 
 <block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusAddress'}}"> 
-<cus-address bind:change="bindChange"></cus-address>
+  <cus-address bind:change="bindChange"></cus-address>
 </block>
 
-
+<block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusCascader'}}"> 
+  <cus-cascader options="{{ utils.get(uiConfig, ['widgetConfig', 'tree_options']) }}" bind:change="bindChange"></cus-cascader>  
+</block>
 
 <block wx:else>
 
