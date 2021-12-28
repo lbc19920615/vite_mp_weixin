@@ -2,7 +2,7 @@
   <wux-cascader visible="{{ visible }}" default-value="{{ value }}" options="{{ inner_options }}" bind:change="onChange" bind:close="onClose" icon-color="#409eff"/>
 
 
-<view  bind:tap="onOpen">
+<view class="cus-cascader__trigger" bind:tap="onOpen">
 <block wx:if="{{title}}">{{title}}</block>
 <block wx:else>{{placeholder}}</block>
 </view>
