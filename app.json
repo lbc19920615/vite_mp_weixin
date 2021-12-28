@@ -19,7 +19,9 @@
   "usingComponents": {
     "mp-html": "mp-html/index",
     "cus-com": "./pages/components/cus-com",
+    "cus-address": "./lib/components/cus-address",
     "van-rate": "/vant/rate/index",
+    "wux-cascader": "./lib/wux/cascader/index",
     "z-picker": "vant-ext/z-picker",
     "z-richtext": "vant-ext/z-richtext"
   },

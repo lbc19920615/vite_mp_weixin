@@ -76,6 +76,10 @@ value="{{item.value}}"></radio>{{item.label}}</label>
 </radio-group>
 </block>
 
+<block wx:elif="{{ utils.get(uiConfig, ['widget']) === 'CusAddress'}}"> 
+<cus-address bind:change="bindChange"></cus-address>
+</block>
+
 
 
 <block wx:else>
