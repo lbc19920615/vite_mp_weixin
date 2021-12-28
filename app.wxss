@@ -106,6 +106,20 @@ slider .wx-slider-track {
   background-color:  var(--el-color-primary);
 }
 
+/* wux */
+page {
+  --el-cascader-menu-selected-text-color: var(--el-color-primary);
+}
+
+.reset-wux .wux-cascader__menu--active {
+  color: var(--el-cascader-menu-selected-text-color);
+}
+
+.reset-wux .wux-cascader__item--active {
+  color: var(--el-cascader-menu-selected-text-color);
+}
+
+/* z frame */
 .z-row {
   display: flex;
   align-items: center;

@@ -1,6 +1,11 @@
 <!--lib/components/cus-addess.wxml-->
-<wux-cascader visible="{{ visible }}" default-value="{{ value }}" title="所在地区" options="{{ options }}" bind:change="onChange" bind:close="onClose" bind:load="onLoadOptions"/>
+<view class="cus-address">
+  <wux-cascader visible="{{ visible }}" default-value="{{ value }}" title="所在地区" options="{{ options }}" bind:change="onChange" bind:close="onClose" bind:load="onLoadOptions" icon-color="#409eff"/>
 
 
-<view  bind:tap="onOpen">open {{title}}</view>
+<view  bind:tap="onOpen">
+<block wx:if="{{title}}">{{title}}</block>
+<block wx:else>{{placeholder}}</block>
+</view>
+</view>
 

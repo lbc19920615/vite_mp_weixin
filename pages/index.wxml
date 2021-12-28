@@ -1,4 +1,4 @@
-<view class="wrapper">
+<view class="wrapper reset-wux">
   <form-a class="cus-form" form-height="500px" 
   bind:form-submit="onSubmitForm"
   bind:form-scroll="onSubmitScroll"
